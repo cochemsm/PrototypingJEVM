@@ -17,6 +17,7 @@ MonoBehaviour:
   jumpHeight: 7
   jumpHeightMultiplier: 1.2
   doubleJumpAmount: 3
+  wallJumpAmount: 4
   health: 10
   maxHealth: 10
   oil: 20

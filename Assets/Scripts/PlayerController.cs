@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private PlayerData playerData;
 
     private Rigidbody2D rigidbody2d;
+    private SpriteRenderer spriteRenderer;
 
     private float input;
     private bool onGround;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         SetBasePlayerStats();
     }
 
@@ -37,7 +39,8 @@ public class PlayerController : MonoBehaviour {
             input = 0f;
             return;
         }
-        input = ctx.ReadValue<float>(); 
+        input = ctx.ReadValue<float>();
+        spriteRenderer.flipX = (input > 0) ? false : true;
     }
     
     private void FixedUpdate() {
