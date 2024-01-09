@@ -9,17 +9,27 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidbody2d;
 
     private float input;
-    private bool canJump;
+    private bool onGround;
 
-    private int health;
+    private float movementSpeed;
+    private float jumpHeight;
+    private int jumpAmount;
+
+    private int currentHealth;
+    private int maxHealth;
+    private int currentOil;
+    private int maxOil;
 
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        SetBasePlayerStats();
     }
 
     public void OnJump(InputAction.CallbackContext ctx) {
-        if (!canJump) return;
-        rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, playerData.JumpHeight);
+        if (!ctx.started) return; 
+        if (!onGround && jumpAmount == 0) return;
+        if (jumpAmount != -1) jumpAmount--;
+        rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
     }
     
     public void OnMove(InputAction.CallbackContext ctx) {
@@ -31,14 +41,82 @@ public class PlayerController : MonoBehaviour {
     }
     
     private void FixedUpdate() {
-        rigidbody2d.velocity = new Vector2(input * playerData.PlayerSpeed, rigidbody2d.velocity.y);
+        rigidbody2d.velocity = new Vector2(input * movementSpeed, rigidbody2d.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        canJump = true;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+            if (collision.contactCount == 0) return;
+            if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / 2) return;
+            onGround = true;
+            ResetAirJumps();
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
-        canJump = false;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+            if (collision.contactCount == 0) return;
+            if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / 2) return;
+            onGround = false;
+        }
+    }
+
+    private void SetBasePlayerStats() {
+        ResetSpeedModifier();
+        ResetJumpModifier();
+        ResetAirJumps();
+        ResetWallJumps();
+        currentHealth = playerData.Health;
+        maxHealth = playerData.MaxHealth;
+        currentOil = playerData.Oil;
+        maxOil = playerData.MaxOil;
+    }
+
+    public void ApplySpeedModifier() {
+        movementSpeed = movementSpeed * playerData.PlayerSpeedMultiplier;
+    }
+
+    public void ResetSpeedModifier() {
+        movementSpeed = playerData.PlayerSpeed;
+    }
+
+    public void ApplyJumpHeightModifier() {
+        jumpHeight = jumpHeight * playerData.JumpHeightMultiplier;
+    }
+
+    public void ResetJumpModifier() {
+        jumpHeight = playerData.JumpHeight;
+    }
+
+    private void ResetAirJumps() {
+        jumpAmount = playerData.DoubleJumpAmount;
+    }
+
+    private void ResetWallJumps() {
+        jumpAmount = playerData.WallJumpAmount;
+    }
+
+    public void ChangeHealth(int value) {
+        if (currentHealth + value <= 0) {
+            currentHealth = 0;
+            return;
+        }
+        if (currentHealth + value >= maxHealth) {
+            currentHealth = maxHealth;
+            return;
+        }
+        currentHealth += value;
+    }
+
+    public void ChangeOil(int value) {
+        if (currentOil + value <= 0) {
+            currentOil = 0;
+            return;
+        }
+        if (currentOil + value >= maxOil) {
+            currentOil = maxOil;
+            return;
+        }
+        currentOil += value;
     }
 }

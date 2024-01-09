@@ -3,52 +3,43 @@ using UnityEngine;
 namespace Data {
     [CreateAssetMenu(menuName = "Data/PlayerData")]
     public class PlayerData : ScriptableObject {
-        public float PlayerSpeed => playerSpeed;
+        [Header("Movement Settings")]
         [SerializeField] private float playerSpeed;
+        public float PlayerSpeed => playerSpeed;
         
-        public float PlayerSpeedMultiplier => playerSpeedMultiplier;
         [SerializeField] private float playerSpeedMultiplier;
+        public float PlayerSpeedMultiplier => playerSpeedMultiplier;
 
-        public float JumpHeight => jumpHeight;
+
+        [Header("Jump Settings")]
         [SerializeField] private float jumpHeight;
+        public float JumpHeight => jumpHeight;
 
-        public float JumpHeightMultiplier => jumpHeightMultiplier;
         [SerializeField] private float jumpHeightMultiplier;
-        
-        public int Health => health;
+        public float JumpHeightMultiplier => jumpHeightMultiplier;
+
+        [Tooltip("The amount of time the player can jump in the air (infinite = -1)")]
+        [SerializeField] private int doubleJumpAmount;
+        public int DoubleJumpAmount => doubleJumpAmount;
+
+        [Tooltip("The amount of time the player can jump on walls (infinite = -1)")]
+        [SerializeField] private int wallJumpAmount;
+        public int WallJumpAmount => wallJumpAmount;
+
+
+        [Header("Health Settings")]
         [SerializeField] private int health;
+        public int Health => health;
         
-        public int MaxHealth => maxHealth;
         [SerializeField] private int maxHealth;
+        public int MaxHealth => maxHealth;
 
-        public int Oil => oil;
+
+        [Header("Oil Settings")]
         [SerializeField] private int oil;
+        public int Oil => oil;
 
-        public int MaxOil => maxOil;
         [SerializeField] private int maxOil;
-
-        public void ChangeHealth(int value) {
-            if (health + value <= 0) {
-                health = 0;
-                return;
-            }
-            if (health + value >= maxHealth) {
-                health = maxHealth;
-                return;
-            }
-            health += value;
-        }
-        
-        public void ChangeOil(int value) {
-            if (oil + value <= 0) {
-                oil = 0;
-                return;
-            }
-            if (oil + value >= maxOil) {
-                oil = maxOil;
-                return;
-            }
-            oil += value;
-        }
+        public int MaxOil => maxOil;
     }
 }
