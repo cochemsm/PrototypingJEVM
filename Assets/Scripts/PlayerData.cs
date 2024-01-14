@@ -41,5 +41,12 @@ namespace Data {
 
         [SerializeField] private int maxOil;
         public int MaxOil => maxOil;
+
+        [Header("Starting Settings")]
+        [SerializeField] private Vector2 startPoint;
+        public Vector2 StartPoint => startPoint;
+
+        [SerializeField] private int damage;
+        public int Damage => damage;
     }
 }

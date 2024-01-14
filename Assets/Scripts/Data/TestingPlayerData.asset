@@ -16,9 +16,10 @@ MonoBehaviour:
   playerSpeedMultiplier: 1.2
   jumpHeight: 7
   jumpHeightMultiplier: 1.2
-  doubleJumpAmount: 3
-  wallJumpAmount: 4
+  doubleJumpAmount: 1
+  wallJumpAmount: -1
   health: 10
   maxHealth: 10
   oil: 20
   maxOil: 20
+  startPoint: {x: 0, y: 0}

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rigidbody2d;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    [SerializeField] private Camera myCamera;
 
     private float input;
     private bool onGround;
@@ -24,12 +25,22 @@ public class PlayerController : MonoBehaviour {
     private int maxHealth;
     private int currentOil;
     private int maxOil;
+    private int damage;
+
+    public int CurrentHealth => currentHealth;
+    public int CurrentOil => currentOil;
+    public int Damage => damage;
+
+    private Vector2 currentRespanwPoint;
+
+    private GameObject attackHitBox;
 
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         SetBasePlayerStats();
+        attackHitBox = transform.GetChild(0).gameObject;
     }
 
     public void OnJump(InputAction.CallbackContext ctx) {
@@ -53,13 +64,16 @@ public class PlayerController : MonoBehaviour {
         }
         input = ctx.ReadValue<float>();
         spriteRenderer.flipX = (input > 0) ? false : true;
+        attackHitBox.transform.localPosition = new Vector2((input > 0) ? 0.1946f : -0.1946f, attackHitBox.transform.localPosition.y);
         animator.SetTrigger("StartWalking");
     }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.E)) {
-            animator.SetTrigger("StartPunch");
+            Attack();
         }
+
+        myCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 
     private void FixedUpdate() {
@@ -72,11 +86,13 @@ public class PlayerController : MonoBehaviour {
                 onWall = true;
                 onWallRight = false;
                 rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                return;
             }
             if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, LayerMask.NameToLayer("Ground")).distance == 0 && walljumpAmount != 0) {
                 onWall = true;
                 onWallRight = true;
                 rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                return;
             }
 
             if (collision.contactCount == 0) return;
@@ -104,10 +120,14 @@ public class PlayerController : MonoBehaviour {
         ResetJumpModifier();
         ResetAirJumps();
         ResetWallJumps();
-        currentHealth = playerData.Health;
+
         maxHealth = playerData.MaxHealth;
-        currentOil = playerData.Oil;
         maxOil = playerData.MaxOil;
+        damage = playerData.Damage;
+
+        SetRespawnPoint(playerData.StartPoint);
+
+        Respawn();
     }
 
     public void ApplySpeedModifier() {
@@ -127,7 +147,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void ResetAirJumps() {
-        jumpAmount = playerData.DoubleJumpAmount;
+        jumpAmount = playerData.DoubleJumpAmount + 1;
     }
 
     private void ResetWallJumps() {
@@ -156,5 +176,24 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         currentOil += value;
+    }
+
+    public void SetRespawnPoint(Vector2 point) {
+        currentRespanwPoint = point;
+    }
+
+    public void Respawn() {
+        transform.position = currentRespanwPoint;
+        currentHealth = maxHealth;
+        currentOil = maxOil;
+    }
+
+    public void Attack() {
+        animator.SetTrigger("StartPunch");
+        Invoke("ActivateAttackHitbox", 0.1f);
+    }
+
+    private void ActivateAttackHitbox() {
+        attackHitBox.SetActive(true);
     }
 }
