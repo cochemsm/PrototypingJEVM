@@ -84,14 +84,13 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-            print(Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).distance);
-            if (Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 && walljumpAmount != 0) {
+            if (Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 && Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null && walljumpAmount != 0) {
                 onWall = true;
                 onWallRight = false;
                 rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 return;
             }
-            if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 && walljumpAmount != 0) {
+            if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 && Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null && walljumpAmount != 0) {
                 onWall = true;
                 onWallRight = true;
                 rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
