@@ -23,3 +23,4 @@ MonoBehaviour:
   oil: 20
   maxOil: 20
   startPoint: {x: 0, y: 0}
+  damage: 1

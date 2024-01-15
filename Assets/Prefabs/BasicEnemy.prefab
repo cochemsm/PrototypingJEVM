@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 625744228}
   - component: {fileID: 625744227}
   - component: {fileID: 3673240915369152617}
+  - component: {fileID: 630574705}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: enemy
@@ -166,3 +167,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 4df8203d11e29814d8ae0850bb08245f, type: 2}
   Damage: 0
+--- !u!114 &630574705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669909374280911108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ef095bf562754499336c3e44b949ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolPointA: {x: 0, y: 0}
+  patrolPointB: {x: 0, y: 0}

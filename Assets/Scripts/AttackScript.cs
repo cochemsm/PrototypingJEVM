@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class AttackScript : MonoBehaviour {
             damage = gameObject.GetComponentInParent<EnemyController>().Damage;
         }
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision) {
         if (player) {
             if (collision.gameObject.tag == "enemy") {
@@ -25,8 +26,17 @@ public class AttackScript : MonoBehaviour {
                 collision.gameObject.GetComponent<PlayerController>().ChangeHealth(-damage);
             }
         }
+    }
 
-        print("Trigger Attack");
+    private void OnTriggerExit2D(Collider2D other) {
+        // print(other.gameObject.name);
+    }
+
+    private void OnEnable() {
+        Invoke("DisableHitbox",0.2f);
+    }
+
+    private void DisableHitbox() {
         gameObject.SetActive(false);
     }
 }

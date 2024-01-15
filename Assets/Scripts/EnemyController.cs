@@ -26,8 +26,8 @@ public class EnemyController : MonoBehaviour {
     private void SetBaseStats() {
         ResetSpeedModifier();
 
-        currentHealth = maxHealth;
         maxHealth = enemyData.MaxHealth;
+        currentHealth = maxHealth;
         damage = enemyData.Damage;
     }
 

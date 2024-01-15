@@ -196,6 +196,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void ActivateAttackHitbox() {
+        rigidbody2d.MovePosition(rigidbody2d.position);
         attackHitBox.SetActive(true);
     }
 }
