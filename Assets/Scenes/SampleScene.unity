@@ -247,6 +247,70 @@ PrefabInstance:
       propertyPath: patrolPointB.x
       value: 3.93
       objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.705445
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.705445
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.04844982
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.04844982
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -82.142
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: ShapeModule.alignToDirection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: InitialModule.startRotation.scalar
+      value: 1.5707963
+      objectReference: {fileID: 0}
     - target: {fileID: 5669909374280911108, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
@@ -611,10 +675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OverrideArea: 0
-  m_Area: 0
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!1 &611691856
 GameObject:
   m_ObjectHideFlags: 0
