@@ -239,6 +239,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 630574705, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: patrolPointA.x
+      value: -3.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 630574705, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: patrolPointB.x
+      value: 3.93
+      objectReference: {fileID: 0}
     - target: {fileID: 5669909374280911108, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
@@ -249,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669909374280911109, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.09
+      value: -1.59
       objectReference: {fileID: 0}
     - target: {fileID: 5669909374280911109, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_LocalPosition.y
