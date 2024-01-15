@@ -10,9 +10,7 @@ public class PlayerController : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     [SerializeField] private Camera myCamera;
-
-    [SerializeField] private LayerMask rayDetectLayer;
-
+    
     private float input;
     private bool onGround;
     private bool onWall;
@@ -33,7 +31,7 @@ public class PlayerController : MonoBehaviour {
     public int CurrentOil => currentOil;
     public int Damage => damage;
 
-    private Vector2 currentRespanwPoint;
+    private Vector2 currentRespawnPoint;
 
     private GameObject attackHitBox;
 
@@ -65,7 +63,7 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         input = ctx.ReadValue<float>();
-        spriteRenderer.flipX = (input > 0) ? false : true;
+        spriteRenderer.flipX = input < 0;
         attackHitBox.transform.localPosition = new Vector2((input > 0) ? 0.1946f : -0.1946f, attackHitBox.transform.localPosition.y);
         animator.SetTrigger("StartWalking");
     }
@@ -83,38 +81,42 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-            if (Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 && Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null && walljumpAmount != 0) {
-                onWall = true;
-                onWallRight = false;
-                rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-                return;
-            }
-            if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 && Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null && walljumpAmount != 0) {
-                onWall = true;
-                onWallRight = true;
-                rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-                return;
-            }
-
-            if (collision.contactCount == 0) return;
-            if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / transform.lossyScale.y / 2) return;
-
-            onGround = true;
-            ResetAirJumps();
-            ResetWallJumps();
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
+        
+        if (Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 
+            && Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null 
+            && walljumpAmount != 0) {
+            onWall = true;
+            onWallRight = false;
+            rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            return;
         }
+        if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 
+            && Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null 
+            && walljumpAmount != 0) {
+            onWall = true;
+            onWallRight = true;
+            rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            return;
+        }
+
+        if (collision.contactCount == 0) return;
+        if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / transform.lossyScale.y / 2) return;
+
+        onGround = true;
+        ResetAirJumps();
+        ResetWallJumps();
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-            if (onWall) {
-                onWall = false;
-                if (walljumpAmount != -1) walljumpAmount--;
-                rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
-            }
-            if (onGround) onGround = false;
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
+        
+        if (onWall) {
+            onWall = false;
+            if (walljumpAmount != -1) walljumpAmount--;
+            rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
+        if (onGround) onGround = false;
     }
 
     private void SetBasePlayerStats() {
@@ -133,7 +135,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void ApplySpeedModifier() {
-        movementSpeed = movementSpeed * playerData.PlayerSpeedMultiplier;
+        movementSpeed *= playerData.PlayerSpeedMultiplier;
     }
 
     public void ResetSpeedModifier() {
@@ -181,18 +183,18 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void SetRespawnPoint(Vector2 point) {
-        currentRespanwPoint = point;
+        currentRespawnPoint = point;
     }
 
     public void Respawn() {
-        transform.position = currentRespanwPoint;
+        transform.position = currentRespawnPoint;
         currentHealth = maxHealth;
         currentOil = maxOil;
     }
 
     public void Attack() {
         animator.SetTrigger("StartPunch");
-        Invoke("ActivateAttackHitbox", 0.1f);
+        Invoke(nameof(ActivateAttackHitbox), 0.1f);
     }
 
     private void ActivateAttackHitbox() {

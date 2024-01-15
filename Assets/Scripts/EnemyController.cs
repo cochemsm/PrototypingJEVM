@@ -6,21 +6,26 @@ public class EnemyController : MonoBehaviour {
     [SerializeField] private EnemyData enemyData;
 
     private Animator animator;
+    private Rigidbody2D rigidbody2d;
 
     private int currentHealth;
     private int maxHealth;
     private int damage;
     private float movementSpeed;
+    private static readonly int StartAttack = Animator.StringToHash("StartAttack");
 
-    public int Damage;
+    public int Damage => damage;
+    public float MovementSpeed => movementSpeed;
 
     private void Awake() {
         animator = GetComponent<Animator>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
         SetBaseStats();
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Q)) animator.SetTrigger("StartAttack");
+        if (Input.GetKeyDown(KeyCode.Q)) animator.SetTrigger(StartAttack);
+        rigidbody2d.velocity = new Vector2(GetComponent<EnemyMovement>().MoveToPatrolPoint().x, rigidbody2d.velocity.y);
     }
 
     private void SetBaseStats() {
@@ -32,7 +37,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     public void ApplySpeedModifier() {
-        movementSpeed = movementSpeed * enemyData.PlayerSpeedMultiplier;
+        movementSpeed *= enemyData.PlayerSpeedMultiplier;
     }
 
     public void ResetSpeedModifier() {

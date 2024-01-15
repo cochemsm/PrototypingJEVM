@@ -1,13 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
     public Vector2 patrolPointA;
     public Vector2 patrolPointB;
 
-    public Vector3 MoveToPatrolPoint() {
-        return Vector3.zero;
+    private Vector2 currentPatrolPoint;
+    private Vector2 oldPatrolPoint;
+
+    private void Awake() {
+        currentPatrolPoint = patrolPointB;
+        oldPatrolPoint = patrolPointA;
+    }
+
+    public Vector2 MoveToPatrolPoint() {
+        Vector2 temp = (currentPatrolPoint - oldPatrolPoint).normalized * GetComponent<EnemyController>().MovementSpeed;
+        
+        if (Math.Abs(transform.position.x - currentPatrolPoint.x) < 0.1f){
+            GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
+            (currentPatrolPoint, oldPatrolPoint) = (oldPatrolPoint, currentPatrolPoint);
+        }
+       
+        
+        return temp;
     }
 
     public void MoveTillTheEnd() {
