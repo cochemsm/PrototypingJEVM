@@ -296,20 +296,44 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: ShapeModule.alignToDirection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.7
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.3
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724675476102210042, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5669909374280911108, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_Name
