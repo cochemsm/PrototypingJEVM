@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour {
     private Animator animator;
     private Rigidbody2D rigidbody2d;
 
+    private GameObject attackHitBox;
+
     private int currentHealth;
     private int maxHealth;
     private int damage;
@@ -20,6 +22,7 @@ public class EnemyController : MonoBehaviour {
     private void Awake() {
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+        attackHitBox = transform.GetChild(0).gameObject;
         SetBaseStats();
     }
 
@@ -47,6 +50,7 @@ public class EnemyController : MonoBehaviour {
     public void ChangeHealth(int value) {
         if (currentHealth + value <= 0) {
             currentHealth = 0;
+            Destroy(gameObject);
             return;
         }
         if (currentHealth + value >= maxHealth) {
@@ -54,5 +58,19 @@ public class EnemyController : MonoBehaviour {
             return;
         }
         currentHealth += value;
+    }
+
+    public void Attack() {
+        animator.SetTrigger(StartAttack);
+        Invoke(nameof(ActivateAttackHitbox), 0.1f);
+    }
+
+    private void ActivateAttackHitbox() {
+        rigidbody2d.MovePosition(rigidbody2d.position);
+        attackHitBox.SetActive(true);
+    }
+
+    public void FlipAttackHitbox() {
+        attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
     }
 }
