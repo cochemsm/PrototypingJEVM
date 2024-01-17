@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour {
         attackHitBox = transform.GetChild(0).gameObject;
     }
 
+    private void Start() {
+        GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
+        GameManager.Instance.SetOilbar((float) currentOil / maxOil);
+    }
+
     public void OnJump(InputAction.CallbackContext ctx) {
         if (onWall) {
             rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -161,13 +166,13 @@ public class PlayerController : MonoBehaviour {
     public void ChangeHealth(int value) {
         if (currentHealth + value <= 0) {
             currentHealth = 0;
-            return;
-        }
-        if (currentHealth + value >= maxHealth) {
+        } else if (currentHealth + value >= maxHealth) {
             currentHealth = maxHealth;
-            return;
+        } else {
+            currentHealth += value;
         }
-        currentHealth += value;
+
+        GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
     }
 
     public void ChangeOil(int value) {
@@ -180,6 +185,8 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         currentOil += value;
+        
+        GameManager.Instance.SetOilbar((float) currentOil / maxOil);
     }
 
     public void SetRespawnPoint(Vector2 point) {
