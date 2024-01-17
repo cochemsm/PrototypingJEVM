@@ -239,6 +239,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.143
+      objectReference: {fileID: 0}
+    - target: {fileID: 841804910054014711, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: SizeBySpeedModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724043308940664998, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: InitialModule.startSpeed.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5669909374280911108, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
@@ -286,6 +338,14 @@ PrefabInstance:
     - target: {fileID: 5669909374280911109, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6759580275986710443, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7844598989717063655, guid: df0870864a79de344bf03b58838f02bd, type: 3}
+      propertyPath: m_Name
+      value: BigExplosion
       objectReference: {fileID: 0}
     - target: {fileID: 9183292903349874128, guid: df0870864a79de344bf03b58838f02bd, type: 3}
       propertyPath: m_IsActive
