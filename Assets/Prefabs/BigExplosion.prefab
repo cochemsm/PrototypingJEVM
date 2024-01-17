@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5980408737117071520}
   - component: {fileID: 4749169135586933555}
   m_Layer: 0
-  m_Name: BigVehicleExplosion
+  m_Name: BigExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
