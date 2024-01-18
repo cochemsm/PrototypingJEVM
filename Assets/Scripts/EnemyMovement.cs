@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
         if (Math.Abs(transform.position.x - currentPatrolPoint.x) < 0.1f){
             GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
             (currentPatrolPoint, oldPatrolPoint) = (oldPatrolPoint, currentPatrolPoint);
-            GetComponent<EnemyController>().FlipAttackHitbox();
+            GetComponent<EnemyController>().FlipChilds();
             attackDirection = (attackDirection == Vector2.right) ? Vector2.left : Vector2.right;
         }
 

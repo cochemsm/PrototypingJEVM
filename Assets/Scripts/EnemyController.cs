@@ -70,7 +70,8 @@ public class EnemyController : MonoBehaviour {
         attackHitBox.SetActive(true);
     }
 
-    public void FlipAttackHitbox() {
+    public void FlipChilds() {
         attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
+        transform.GetChild(2).localPosition = new Vector2(transform.GetChild(2).localPosition.x * -1, transform.GetChild(2).localPosition.y);
     }
 }
