@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour {
     public void ChangeHealth(int value) {
         if (currentHealth + value <= 0) {
             currentHealth = 0;
-            Destroy(gameObject);
+            Death();
             return;
         }
         if (currentHealth + value >= maxHealth) {
@@ -73,5 +73,13 @@ public class EnemyController : MonoBehaviour {
     public void FlipChilds() {
         attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
         transform.GetChild(2).localPosition = new Vector2(transform.GetChild(2).localPosition.x * -1, transform.GetChild(2).localPosition.y);
+    }
+
+    private void Death() {
+        transform.GetChild(0).GetComponent<AttackScript>().DestroySelf();
+        transform.GetChild(1).GetComponent<ParticleSystem>().loop = false;
+        transform.GetChild(2).GetComponent<ParticleSystem>().Play();
+        transform.DetachChildren();
+        Destroy(gameObject);
     }
 }

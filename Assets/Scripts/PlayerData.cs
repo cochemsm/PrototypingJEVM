@@ -28,9 +28,6 @@ namespace Data {
 
 
         [Header("Health Settings")]
-        [SerializeField] private int health;
-        public int Health => health;
-        
         [SerializeField] private int maxHealth;
         public int MaxHealth => maxHealth;
 

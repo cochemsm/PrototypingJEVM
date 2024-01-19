@@ -39,4 +39,8 @@ public class AttackScript : MonoBehaviour {
     private void DisableHitbox() {
         gameObject.SetActive(false);
     }
+
+    public void DestroySelf() {
+        Destroy(gameObject);
+    }
 }

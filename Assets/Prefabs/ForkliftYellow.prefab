@@ -77,14 +77,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.28}
+    oldSize: {x: 0.36, y: 0.25}
     newSize: {x: 0.32, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.28}
+  m_Size: {x: 0.36, y: 0.25}
   m_EdgeRadius: 0
 --- !u!212 &2284035060790641329
 SpriteRenderer:
@@ -126,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -822373165692517707, guid: 4de4e1d61c503a54aa6cdbfcf77b117d, type: 3}
+  m_Sprite: {fileID: -4599206304276605287, guid: e5821c47874490540a960384216180e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 5844851257680925393}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3f85aa8dc17a74d439f6ea1cac97c392, type: 2}
+  m_Controller: {fileID: 9100000, guid: c4f24d26be40e994a97d98ffa04405b4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c82b9b427b40a545976b72c8f0bacd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 4df8203d11e29814d8ae0850bb08245f, type: 2}
+  enemyData: {fileID: 11400000, guid: b50879f75415d5e41b9d46131f085e78, type: 2}
 --- !u!114 &2284035060777555364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +317,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980408737117071520, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980408737117071520, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 2
       objectReference: {fileID: 0}
@@ -341,6 +345,10 @@ PrefabInstance:
     - target: {fileID: 1076836352890471205, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: m_Name
       value: VehicleSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 2567897993210684516, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2567897993210684516, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: lengthInSec
