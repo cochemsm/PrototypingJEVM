@@ -317,8 +317,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5980408737117071520, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980408737117071520, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9199762653906472929, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: m_Name

@@ -1860,6 +1860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForkliftYellow
       objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
 --- !u!1001 &5750074118664514027
