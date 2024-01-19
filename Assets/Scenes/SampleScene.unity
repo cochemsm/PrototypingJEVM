@@ -1809,6 +1809,10 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4790809360602653822, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.325
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790809360602653822, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.1
       objectReference: {fileID: 0}
@@ -1861,8 +1865,56 @@ PrefabInstance:
       value: ForkliftYellow
       objectReference: {fileID: 0}
     - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: simulationSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790770271453379443, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
