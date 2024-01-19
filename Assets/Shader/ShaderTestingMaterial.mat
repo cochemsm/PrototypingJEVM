@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ShaderTestingMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 200142ab022ef8b408c9c76a8fbc7a10, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 758645cc875c16a4fa34df0c683e08e1, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -37,6 +37,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_19a3812dd7574780ba7533967c285dc7:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_52d72d73a8dd4913a0227361eed34762:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -130,6 +138,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_2481f1353d5741a2a4021cd8da50bb36: 12
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1

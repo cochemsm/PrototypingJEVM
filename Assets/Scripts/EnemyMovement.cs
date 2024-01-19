@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
@@ -9,6 +10,8 @@ public class EnemyMovement : MonoBehaviour {
     private Vector2 oldPatrolPoint;
 
     private Vector2 attackDirection = Vector2.right;
+
+    private bool attack;
 
     private void Awake() {
         currentPatrolPoint = patrolPointB;
@@ -25,9 +28,17 @@ public class EnemyMovement : MonoBehaviour {
             attackDirection = (attackDirection == Vector2.right) ? Vector2.left : Vector2.right;
         }
 
-        if (Physics2D.Raycast(transform.position, attackDirection, 2, LayerMask.GetMask("Player")).collider != null) {
+        if (Physics2D.Raycast(transform.position, attackDirection, 1, LayerMask.GetMask("Player")).collider != null) {
             temp = Vector2.zero;
-            GetComponent<EnemyController>().Attack();
+
+
+
+
+            if (!attack) {
+                attack = true;
+                GetComponent<EnemyController>().Attack();
+                StartCoroutine(AttackCooldown(2));
+            }
         }
 
         return temp;
@@ -39,5 +50,15 @@ public class EnemyMovement : MonoBehaviour {
 
     public void FindObstacle() {
         
+    }
+
+    private IEnumerator AttackCooldown(int seconds) {
+        yield return new WaitForSecondsRealtime(seconds);
+        attack = false;
+    }
+
+    private IEnumerator AttackIndicator(int seconds) {
+        yield return new WaitForSecondsRealtime(seconds);
+
     }
 }
