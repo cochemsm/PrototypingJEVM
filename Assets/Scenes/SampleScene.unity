@@ -1817,6 +1817,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 602852313804880431, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 602852313804880431, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 602852313804880431, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 602852313804880431, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449091258672227618, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449091258672227618, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449091258672227618, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2284035060790641329, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1840,6 +1868,10 @@ PrefabInstance:
     - target: {fileID: 2284035060790641335, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4790809360602653822, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5844851257680925392, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
       propertyPath: m_RootOrder
