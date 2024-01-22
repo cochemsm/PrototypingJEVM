@@ -4,6 +4,7 @@ using UnityEngine;
 public class AttackScript : MonoBehaviour {
     private bool player;
     private int damage;
+    public Vector2 force;
 
     private void Awake() {
         if (gameObject.GetComponentInParent<PlayerController>()) {
@@ -21,8 +22,10 @@ public class AttackScript : MonoBehaviour {
         };
         GetComponent<BoxCollider2D>().OverlapCollider(filter, results);
         foreach (var hit in results) {
-            if(player ? hit.CompareTag("enemy") : hit.CompareTag("player"))
+            if (player ? hit.CompareTag("enemy") : hit.CompareTag("player")) {
                 hit.gameObject.GetComponent<IDamageable>().ChangeHealth(-damage);
+                hit.gameObject.GetComponent<IDamageable>().GiveForce(force);
+            }
         }
         if (player) gameObject.GetComponentInParent<PlayerController>().StartCombo();
         gameObject.SetActive(false);

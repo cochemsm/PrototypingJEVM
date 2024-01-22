@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Data;
 
@@ -14,7 +15,9 @@ public class EnemyController : MonoBehaviour, IDamageable {
     private int maxHealth;
     private int damage;
     private float movementSpeed;
-    private static readonly int StartAttack = Animator.StringToHash("StartAttack");
+    private bool stunned;
+
+    [SerializeField] private string forkliftColor;
 
     public int Damage => damage;
     public float MovementSpeed => movementSpeed;
@@ -27,6 +30,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     }
 
     private void Update() {
+        if (stunned) return; 
         rigidbody2d.velocity = new Vector2(GetComponent<EnemyMovement>().MoveToPatrolPoint().x, rigidbody2d.velocity.y);
     }
 
@@ -59,8 +63,20 @@ public class EnemyController : MonoBehaviour, IDamageable {
         currentHealth += value;
     }
 
-    public void Attack() {
-        animator.SetTrigger(StartAttack);
+    public void GiveForce(Vector2 force) {
+        rigidbody2d.velocity = force;
+        stunned = true;
+        StopCoroutine(Stun());
+    }
+
+    private IEnumerator Stun() {
+        yield return new WaitForSeconds(1);
+        stunned = false;
+    }
+
+    public void Attack(bool right) {
+        animator.Play(forkliftColor + "_basic_attack");
+        attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -5 : 5, 6);
     }
 
     private void ActivateAttackHitbox() {

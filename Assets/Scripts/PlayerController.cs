@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Data;
@@ -19,7 +20,10 @@ public class PlayerController : MonoBehaviour, IDamageable {
     private bool death;
     private int combo;
     private bool comboCooldown;
-
+    private bool jumpedWall;
+    private bool stunned;
+    private bool right;
+    
     private float movementSpeed;
     private float jumpHeight;
     private int jumpAmount;
@@ -55,10 +59,13 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     public void OnJump(InputAction.CallbackContext ctx) {
+        if (stunned) return;
         if (onWall) {
             rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
             rigidbody2d.velocity = new Vector2(0, jumpHeight);
             input = onWallRight ? -1 : 1;
+            jumpedWall = true;
+            StartCoroutine(JumpedFromWall());
             return;
         }
         if (!ctx.started) return;
@@ -69,6 +76,8 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
     
     public void OnMove(InputAction.CallbackContext ctx) {
+        if (stunned) return;
+        if (jumpedWall) return;
         if (ctx.canceled) {
             input = 0f;
             if (!onWall) animator.Play("main_character_idle");
@@ -76,8 +85,14 @@ public class PlayerController : MonoBehaviour, IDamageable {
         }
         input = ctx.ReadValue<float>();
         spriteRenderer.flipX = input < 0;
+        right = input < 0;
         attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
         animator.Play("main_character_walking");
+    }
+
+    private IEnumerator JumpedFromWall() {
+        yield return new WaitForSeconds(1);
+        jumpedWall = false;
     }
 
     public void OnRespawn(InputAction.CallbackContext ctx) {
@@ -91,37 +106,45 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     private void FixedUpdate() {
+        if (stunned) return;
         rigidbody2d.velocity = new Vector2(input * movementSpeed, rigidbody2d.velocity.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
+        ResetAirJumps();
+        ResetWallJumps();
         
-        if (Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 
-            && Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null 
-            && walljumpAmount != 0) {
-            onWall = true;
-            onWallRight = false;
-            rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            animator.Play("main_character_on_wall");
-            return;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground"));
+        if (hit.collider) {
+            if ((int) hit.distance == 0 && walljumpAmount != 0) {
+                onWall = true;
+                onWallRight = false;
+                spriteRenderer.flipX = !onWallRight;
+                rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                animator.Play("main_character_on_wall");
+                return;
+            }
         }
-        if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 
-            && Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null 
-            && walljumpAmount != 0) {
-            onWall = true;
-            onWallRight = true;
-            rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            animator.Play("main_character_on_wall");
-            return;
+        hit = Physics2D.Raycast(transform.position, Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground"));
+        if (hit.collider) {
+            if ((int) hit.distance == 0 && walljumpAmount != 0) {
+                onWall = true;
+                onWallRight = true;
+                spriteRenderer.flipX = !onWallRight;
+                rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                animator.Play("main_character_on_wall");
+                return;
+            }
         }
 
         if (collision.contactCount == 0) return;
         if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / transform.lossyScale.y / 2) return;
-
         onGround = true;
-        ResetAirJumps();
-        ResetWallJumps();
+    }
+
+    public void ActivateAttackHitbox() {
+        attackHitBox.SetActive(true);
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
@@ -181,6 +204,12 @@ public class PlayerController : MonoBehaviour, IDamageable {
         GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
     }
 
+    public void GiveForce(Vector2 force) {
+        rigidbody2d.velocity = force;
+        stunned = true;
+        StartCoroutine(Stun());
+    }
+
     public void ChangeOil(int value) {
         currentOil = Mathf.Clamp(currentOil + value, 0, maxOil);
         GameManager.Instance.SetOilbar((float) currentOil / maxOil);
@@ -205,15 +234,12 @@ public class PlayerController : MonoBehaviour, IDamageable {
                 return;
             case 2:
                 animator.Play("main_character_punch3");
+                attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -5 : 5, 6);
                 return;
             default:
                 animator.Play("main_character_punch1");
                 break;
         }
-    }
-
-    private void ActivateAttackHitbox() {
-        attackHitBox.SetActive(true);
     }
 
     private void Death() {
@@ -242,5 +268,10 @@ public class PlayerController : MonoBehaviour, IDamageable {
         yield return new WaitForSeconds(1);
         combo = 0;
         animator.Play("main_character_idle");
+    }
+
+    private IEnumerator Stun() {
+        yield return new WaitForSeconds(1);
+        stunned = false;
     }
 }

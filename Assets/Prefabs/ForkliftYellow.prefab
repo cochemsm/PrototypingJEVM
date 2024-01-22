@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: b50879f75415d5e41b9d46131f085e78, type: 2}
+  forkliftColor: yellow
 --- !u!114 &2284035060777555364
 MonoBehaviour:
   m_ObjectHideFlags: 0
