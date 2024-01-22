@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Data;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     private bool death;
     private int combo;
     private bool comboCooldown;
+    private bool jumpedWall;
 
     private float movementSpeed;
     private float jumpHeight;
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour, IDamageable {
             rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
             rigidbody2d.velocity = new Vector2(0, jumpHeight);
             input = onWallRight ? -1 : 1;
+            jumpedWall = true;
+            StartCoroutine(JumpedFromWall());
             return;
         }
         if (!ctx.started) return;
@@ -69,6 +73,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
     
     public void OnMove(InputAction.CallbackContext ctx) {
+        if (jumpedWall) return;
         if (ctx.canceled) {
             input = 0f;
             if (!onWall) animator.Play("main_character_idle");
@@ -78,6 +83,11 @@ public class PlayerController : MonoBehaviour, IDamageable {
         spriteRenderer.flipX = input < 0;
         attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
         animator.Play("main_character_walking");
+    }
+
+    private IEnumerator JumpedFromWall() {
+        yield return new WaitForSeconds(1);
+        jumpedWall = false;
     }
 
     public void OnRespawn(InputAction.CallbackContext ctx) {
@@ -97,23 +107,25 @@ public class PlayerController : MonoBehaviour, IDamageable {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
         
-        if (Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 
-            && Physics2D.Raycast(transform.position - new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null 
-            && walljumpAmount != 0) {
-            onWall = true;
-            onWallRight = false;
-            rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            animator.Play("main_character_on_wall");
-            return;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, Mathf.Infinity, LayerMask.GetMask("Ground"));
+        if (hit.collider) {
+            if ((int) hit.distance == 0 && walljumpAmount != 0) {
+                onWall = true;
+                onWallRight = false;
+                rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                animator.Play("main_character_on_wall");
+                return;
+            }
         }
-        if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 
-            && Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).collider != null 
-            && walljumpAmount != 0) {
-            onWall = true;
-            onWallRight = true;
-            rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            animator.Play("main_character_on_wall");
-            return;
+        hit = Physics2D.Raycast(transform.position, Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground"));
+        if (hit.collider) {
+            if ((int) hit.distance == 0 && walljumpAmount != 0) {
+                onWall = true;
+                onWallRight = true;
+                rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+                animator.Play("main_character_on_wall");
+                return;
+            }
         }
 
         if (collision.contactCount == 0) return;
@@ -210,10 +222,6 @@ public class PlayerController : MonoBehaviour, IDamageable {
                 animator.Play("main_character_punch1");
                 break;
         }
-    }
-
-    private void ActivateAttackHitbox() {
-        attackHitBox.SetActive(true);
     }
 
     private void Death() {

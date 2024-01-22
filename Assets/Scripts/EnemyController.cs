@@ -14,7 +14,8 @@ public class EnemyController : MonoBehaviour, IDamageable {
     private int maxHealth;
     private int damage;
     private float movementSpeed;
-    private static readonly int StartAttack = Animator.StringToHash("StartAttack");
+
+    [SerializeField] private string forkliftColor;
 
     public int Damage => damage;
     public float MovementSpeed => movementSpeed;
@@ -60,7 +61,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     }
 
     public void Attack() {
-        animator.SetTrigger(StartAttack);
+        animator.Play(forkliftColor + "_basic_attack");
     }
 
     private void ActivateAttackHitbox() {
