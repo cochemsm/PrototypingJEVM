@@ -4,7 +4,7 @@ using Data;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour, IDamageable {
     [SerializeField] private PlayerData playerData;
 
     private Rigidbody2D rigidbody2d;

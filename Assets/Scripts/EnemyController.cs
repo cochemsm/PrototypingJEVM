@@ -1,7 +1,7 @@
 using UnityEngine;
 using Data;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour, IDamageable {
 
     [SerializeField] private EnemyData enemyData;
 
@@ -73,11 +73,9 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void Death() {
-        //TODO mach besser damit gerrit nicht meckert
-        transform.GetChild(0).GetComponent<AttackScript>().DestroySelf();
-        transform.GetChild(1).GetComponent<ParticleSystem>().loop = false;
-        transform.GetChild(2).GetComponent<ParticleSystem>().Play();
-        transform.DetachChildren();
+        ParticleSystem death = transform.GetChild(2).GetComponent<ParticleSystem>();
+        death.Play();
+        death.transform.SetParent(null, true);
         Destroy(gameObject);
     }
 }
