@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Data;
 using UnityEngine.InputSystem;
@@ -15,6 +16,9 @@ public class PlayerController : MonoBehaviour {
     private bool onGround;
     private bool onWall;
     private bool onWallRight;
+    private bool death;
+    private int combo;
+    private bool comboCooldown;
 
     private float movementSpeed;
     private float jumpHeight;
@@ -26,7 +30,9 @@ public class PlayerController : MonoBehaviour {
     private int currentOil;
     private int maxOil;
     private int damage;
-
+    
+    private Coroutine comboReset;
+    
     public int CurrentHealth => currentHealth;
     public int CurrentOil => currentOil;
     public int Damage => damage;
@@ -59,25 +65,28 @@ public class PlayerController : MonoBehaviour {
         if (!onGround && jumpAmount == 0) return;
         if (jumpAmount != -1) jumpAmount--;
         rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
+        animator.Play("main_character_jump");
     }
     
     public void OnMove(InputAction.CallbackContext ctx) {
         if (ctx.canceled) {
             input = 0f;
-            animator.SetTrigger("StopWalking");
+            if (!onWall) animator.Play("main_character_idle");
             return;
         }
         input = ctx.ReadValue<float>();
         spriteRenderer.flipX = input < 0;
-        attackHitBox.transform.localPosition = new Vector2((input > 0) ? 0.1946f : -0.1946f, attackHitBox.transform.localPosition.y);
-        animator.SetTrigger("StartWalking");
+        attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
+        animator.Play("main_character_walking");
+    }
+
+    public void OnRespawn(InputAction.CallbackContext ctx) {
+        if (!death) return;
+        death = false;
+        Respawn();
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.E)) {
-            Attack();
-        }
-
         myCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 
@@ -94,6 +103,7 @@ public class PlayerController : MonoBehaviour {
             onWall = true;
             onWallRight = false;
             rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            animator.Play("main_character_on_wall");
             return;
         }
         if (Physics2D.Raycast(transform.position + new Vector3(transform.localScale.x / transform.lossyScale.x / 2, 0, 0), Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground")).distance == 0 
@@ -102,6 +112,7 @@ public class PlayerController : MonoBehaviour {
             onWall = true;
             onWallRight = true;
             rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            animator.Play("main_character_on_wall");
             return;
         }
 
@@ -164,28 +175,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void ChangeHealth(int value) {
-        if (currentHealth + value <= 0) {
-            currentHealth = 0;
-        } else if (currentHealth + value >= maxHealth) {
-            currentHealth = maxHealth;
-        } else {
-            currentHealth += value;
-        }
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
+        if (currentHealth == 0) Death();
 
         GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
     }
 
     public void ChangeOil(int value) {
-        if (currentOil + value <= 0) {
-            currentOil = 0;
-            return;
-        }
-        if (currentOil + value >= maxOil) {
-            currentOil = maxOil;
-            return;
-        }
-        currentOil += value;
-        
+        currentOil = Mathf.Clamp(currentOil + value, 0, maxOil);
         GameManager.Instance.SetOilbar((float) currentOil / maxOil);
     }
 
@@ -199,13 +196,51 @@ public class PlayerController : MonoBehaviour {
         currentOil = maxOil;
     }
 
-    public void Attack() {
-        animator.SetTrigger("StartPunch");
-        Invoke(nameof(ActivateAttackHitbox), 0.1f);
+    public void OnAttack(InputAction.CallbackContext ctx) {
+        if (comboCooldown) return;
+        if (!ctx.started) return;
+        switch (combo) {
+            case 1:
+                animator.Play("main_character_punch2");
+                return;
+            case 2:
+                animator.Play("main_character_punch3");
+                return;
+            default:
+                animator.Play("main_character_punch1");
+                break;
+        }
     }
 
     private void ActivateAttackHitbox() {
-        rigidbody2d.MovePosition(rigidbody2d.position);
         attackHitBox.SetActive(true);
+    }
+
+    private void Death() {
+        death = true;
+    }
+
+    public void StartCombo() {
+        combo += 1;
+        if (combo == 3) {
+            combo = 0;
+            comboCooldown = true;
+            StartCoroutine(ComboCooldown());
+            return;
+        }
+        if (comboReset != null) StopCoroutine(comboReset);
+        comboReset = StartCoroutine(ResetCombo());
+    }
+
+    private IEnumerator ComboCooldown() {
+        yield return new WaitForSeconds(2);
+        comboCooldown = false;
+        animator.Play("main_character_idle");
+    }
+    
+    private IEnumerator ResetCombo() {
+        yield return new WaitForSeconds(1);
+        combo = 0;
+        animator.Play("main_character_idle");
     }
 }

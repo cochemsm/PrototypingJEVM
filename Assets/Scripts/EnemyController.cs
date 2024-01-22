@@ -27,7 +27,6 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Q)) animator.SetTrigger(StartAttack);
         rigidbody2d.velocity = new Vector2(GetComponent<EnemyMovement>().MoveToPatrolPoint().x, rigidbody2d.velocity.y);
     }
 
@@ -62,11 +61,9 @@ public class EnemyController : MonoBehaviour {
 
     public void Attack() {
         animator.SetTrigger(StartAttack);
-        Invoke(nameof(ActivateAttackHitbox), 0.1f);
     }
 
     private void ActivateAttackHitbox() {
-        rigidbody2d.MovePosition(rigidbody2d.position);
         attackHitBox.SetActive(true);
     }
 
@@ -76,6 +73,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void Death() {
+        //TODO mach besser damit gerrit nicht meckert
         transform.GetChild(0).GetComponent<AttackScript>().DestroySelf();
         transform.GetChild(1).GetComponent<ParticleSystem>().loop = false;
         transform.GetChild(2).GetComponent<ParticleSystem>().Play();
