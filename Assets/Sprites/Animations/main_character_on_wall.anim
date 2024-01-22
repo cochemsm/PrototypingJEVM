@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: yellow_idle
+  m_Name: main_character_on_wall
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -4599206304276605287, guid: e5821c47874490540a960384216180e8, type: 3}
+      value: {fileID: 3835780017343055224, guid: 1a345eae83392da4c8a27a64a14f98c9, type: 3}
     - time: 0.25
-      value: {fileID: 6321078318118685183, guid: e5821c47874490540a960384216180e8, type: 3}
+      value: {fileID: 3706694815695723775, guid: 1a345eae83392da4c8a27a64a14f98c9, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -4599206304276605287, guid: e5821c47874490540a960384216180e8, type: 3}
-    - {fileID: 6321078318118685183, guid: e5821c47874490540a960384216180e8, type: 3}
+    - {fileID: 3835780017343055224, guid: 1a345eae83392da4c8a27a64a14f98c9, type: 3}
+    - {fileID: 3706694815695723775, guid: 1a345eae83392da4c8a27a64a14f98c9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

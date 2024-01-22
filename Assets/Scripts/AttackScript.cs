@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackScript : MonoBehaviour {
-    private bool player = false;
+    private bool player;
     private int damage;
 
     private void Awake() {
@@ -15,28 +13,25 @@ public class AttackScript : MonoBehaviour {
             damage = gameObject.GetComponentInParent<EnemyController>().Damage;
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (player) {
-            if (collision.gameObject.tag == "enemy") {
-                collision.gameObject.GetComponent<EnemyController>().ChangeHealth(-damage);
-            }
-        } else {
-            if (collision.gameObject.tag == "player") {
-                collision.gameObject.GetComponent<PlayerController>().ChangeHealth(-damage);
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other) {
-        // print(other.gameObject.name);
-    }
 
     private void OnEnable() {
-        Invoke("DisableHitbox",0.2f);
-    }
-
-    private void DisableHitbox() {
+        List<Collider2D> results = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D {
+            layerMask = LayerMask.GetMask("Enemy")
+        };
+        GetComponent<BoxCollider2D>().OverlapCollider(filter, results);
+        foreach (var hit in results) {
+            if (player) {
+                if (hit.CompareTag("enemy")) {
+                    hit.gameObject.GetComponent<EnemyController>().ChangeHealth(-damage);
+                }
+            } else {
+                if (hit.CompareTag("player")) {
+                    hit.gameObject.GetComponent<PlayerController>().ChangeHealth(-damage);
+                }
+            }
+        }
+        if (player) gameObject.GetComponentInParent<PlayerController>().StartCombo();
         gameObject.SetActive(false);
     }
 

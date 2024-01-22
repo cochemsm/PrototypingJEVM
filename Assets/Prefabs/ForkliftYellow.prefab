@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2284035060790641334}
   - component: {fileID: 3263839724904156092}
   - component: {fileID: 2284035060777555364}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ForkliftYellow
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5674350957146011565, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.325
       objectReference: {fileID: 0}
     - target: {fileID: 5674350957146011565, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: m_LocalScale.y
@@ -286,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5674350957146011565, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.5708618
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5674350957146011565, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: m_LocalRotation.w
@@ -322,11 +322,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5980408737117071520, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 2
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980408737117071520, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980408737117071520, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
+      propertyPath: UVModule.frameOverTime.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 9199762653906472929, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
       propertyPath: m_Name
       value: BigVehicleExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199762653906472929, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a92bd437f8e2d545a725372963b6045, type: 3}
@@ -346,6 +358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VehicleSmoke
       objectReference: {fileID: 0}
+    - target: {fileID: 1076836352890471205, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 2567897993210684516, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: stopAction
       value: 2
@@ -360,11 +376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2567897993210684516, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2567897993210684516, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2567897993210684516, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
@@ -384,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2567897993210684516, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4603514107110783849, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: m_RootOrder
@@ -404,15 +420,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4603514107110783849, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.13
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4603514107110783849, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.115
+      value: -0.035
       objectReference: {fileID: 0}
     - target: {fileID: 4603514107110783849, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.5708618
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4603514107110783849, guid: e458a315f79ec584796ae9af27346ba7, type: 3}
       propertyPath: m_LocalRotation.w
