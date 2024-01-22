@@ -10,7 +10,8 @@ public class EnemyMovement : MonoBehaviour {
     private Vector2 oldPatrolPoint;
 
     private Vector2 attackDirection = Vector2.right;
-
+    
+    private bool right;
     private bool attack;
 
     private void Awake() {
@@ -25,31 +26,20 @@ public class EnemyMovement : MonoBehaviour {
             GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
             (currentPatrolPoint, oldPatrolPoint) = (oldPatrolPoint, currentPatrolPoint);
             GetComponent<EnemyController>().FlipChilds();
+            right = !right;
             attackDirection = (attackDirection == Vector2.right) ? Vector2.left : Vector2.right;
         }
 
         if (Physics2D.Raycast(transform.position, attackDirection, 1, LayerMask.GetMask("Player")).collider != null) {
             temp = Vector2.zero;
-
-
-
-
             if (!attack) {
                 attack = true;
-                GetComponent<EnemyController>().Attack();
+                GetComponent<EnemyController>().Attack(right);
                 StartCoroutine(AttackCooldown(2));
             }
         }
 
         return temp;
-    }
-
-    public void MoveTillTheEnd() {
-        
-    }
-
-    public void FindObstacle() {
-        
     }
 
     private IEnumerator AttackCooldown(int seconds) {
@@ -59,6 +49,5 @@ public class EnemyMovement : MonoBehaviour {
 
     private IEnumerator AttackIndicator(int seconds) {
         yield return new WaitForSecondsRealtime(seconds);
-
     }
 }
