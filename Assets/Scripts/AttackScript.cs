@@ -21,21 +21,10 @@ public class AttackScript : MonoBehaviour {
         };
         GetComponent<BoxCollider2D>().OverlapCollider(filter, results);
         foreach (var hit in results) {
-            if (player) {
-                if (hit.CompareTag("enemy")) {
-                    hit.gameObject.GetComponent<EnemyController>().ChangeHealth(-damage);
-                }
-            } else {
-                if (hit.CompareTag("player")) {
-                    hit.gameObject.GetComponent<PlayerController>().ChangeHealth(-damage);
-                }
-            }
+            if(player ? hit.CompareTag("enemy") : hit.CompareTag("player"))
+                hit.gameObject.GetComponent<IDamageable>().ChangeHealth(-damage);
         }
         if (player) gameObject.GetComponentInParent<PlayerController>().StartCombo();
         gameObject.SetActive(false);
-    }
-
-    public void DestroySelf() {
-        Destroy(gameObject);
     }
 }
