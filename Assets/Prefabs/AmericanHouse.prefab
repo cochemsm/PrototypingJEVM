@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6002672994553195039
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9085654
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.269788
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7816386490455452034, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -6664626655344533558, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -3549171713360404139, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -1721898772791672382, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Name
+      value: AmericanHouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2025357602634422307, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2483487613521858669, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4488091971916619159, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5838483019165037570, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8029071131254530835, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8637481940794896975, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73ed5c6e1d4221c469373dd09fd617eb, type: 3}
