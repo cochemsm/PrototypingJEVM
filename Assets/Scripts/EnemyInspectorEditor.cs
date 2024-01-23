@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-
+/*
 [CustomEditor(typeof(EnemyMovement))]
 [CanEditMultipleObjects]
 public class EnemyInspectorEditor : Editor {
@@ -29,4 +29,4 @@ public class EnemyInspectorEditor : Editor {
         
         serializedObject.ApplyModifiedProperties();
     }
-}
+}*/
