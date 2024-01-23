@@ -20,14 +20,18 @@ public class AttackScript : MonoBehaviour {
         ContactFilter2D filter = new ContactFilter2D {
             layerMask = LayerMask.GetMask("Enemy")
         };
+        bool hit = false;
         GetComponent<BoxCollider2D>().OverlapCollider(filter, results);
-        foreach (var hit in results) {
-            if (player ? hit.CompareTag("enemy") : hit.CompareTag("player")) {
-                hit.gameObject.GetComponent<IDamageable>().ChangeHealth(-damage);
-                hit.gameObject.GetComponent<IDamageable>().GiveForce(force);
+        foreach (var hitTarget in results) {
+            if (player ? hitTarget.CompareTag("enemy") : hitTarget.CompareTag("player")) {
+                hit = hitTarget.gameObject.GetComponent<IDamageable>().ChangeHealth(-damage);
+                hitTarget.gameObject.GetComponent<IDamageable>().GiveForce(force);
             }
         }
         if (player) gameObject.GetComponentInParent<PlayerController>().StartCombo();
+        else if (!player) {
+            GetComponentInParent<EnemyController>().StartCombo(hit);
+        }
         gameObject.SetActive(false);
     }
 }

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     [SerializeField] private Camera myCamera;
+    [SerializeField] private Camera backgroundCamera;
     
     private float input;
     private bool onGround;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
             input = onWallRight ? -1 : 1;
             jumpedWall = true;
             StartCoroutine(JumpedFromWall());
+            animator.Play("main_character_jump");
             return;
         }
         if (!ctx.started) return;
@@ -73,6 +75,11 @@ public class PlayerController : MonoBehaviour, IDamageable {
         if (jumpAmount != -1) jumpAmount--;
         rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpHeight);
         animator.Play("main_character_jump");
+    }
+    
+    private IEnumerator JumpedFromWall() {
+        yield return new WaitForSeconds(0.5f);
+        jumpedWall = false;
     }
     
     public void OnMove(InputAction.CallbackContext ctx) {
@@ -90,11 +97,6 @@ public class PlayerController : MonoBehaviour, IDamageable {
         animator.Play("main_character_walking");
     }
 
-    private IEnumerator JumpedFromWall() {
-        yield return new WaitForSeconds(1);
-        jumpedWall = false;
-    }
-
     public void OnRespawn(InputAction.CallbackContext ctx) {
         if (!death) return;
         death = false;
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
     private void Update() {
         myCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        backgroundCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 
     private void FixedUpdate() {
@@ -141,6 +144,8 @@ public class PlayerController : MonoBehaviour, IDamageable {
         if (collision.contactCount == 0) return;
         if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / transform.lossyScale.y / 2) return;
         onGround = true;
+        animator.Play("main_character_idle");
+        input = 0;
     }
 
     public void ActivateAttackHitbox() {
@@ -197,11 +202,12 @@ public class PlayerController : MonoBehaviour, IDamageable {
         walljumpAmount = playerData.WallJumpAmount;
     }
 
-    public void ChangeHealth(int value) {
+    public bool ChangeHealth(int value) {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
         if (currentHealth == 0) Death();
 
         GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
+        return true;
     }
 
     public void GiveForce(Vector2 force) {
@@ -259,7 +265,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     private IEnumerator ComboCooldown() {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         comboCooldown = false;
         animator.Play("main_character_idle");
     }

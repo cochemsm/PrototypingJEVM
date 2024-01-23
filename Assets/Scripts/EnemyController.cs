@@ -15,9 +15,13 @@ public class EnemyController : MonoBehaviour, IDamageable {
     private int maxHealth;
     private int damage;
     private float movementSpeed;
+
+    private bool right;
     private bool stunned;
 
     [SerializeField] private string forkliftColor;
+    [SerializeField] private bool liftable;
+    [SerializeField] private bool secondaryAttack;
 
     public int Damage => damage;
     public float MovementSpeed => movementSpeed;
@@ -49,24 +53,17 @@ public class EnemyController : MonoBehaviour, IDamageable {
     public void ResetSpeedModifier() {
         movementSpeed = enemyData.PlayerSpeed;
     }
-
-    public void ChangeHealth(int value) {
-        if (currentHealth + value <= 0) {
-            currentHealth = 0;
-            Death();
-            return;
-        }
-        if (currentHealth + value >= maxHealth) {
-            currentHealth = maxHealth;
-            return;
-        }
-        currentHealth += value;
+    
+    public bool ChangeHealth(int value) {
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
+        if (currentHealth == 0) Death();
+        stunned = true;
+        StopCoroutine(Stun());
+        return true;
     }
 
     public void GiveForce(Vector2 force) {
-        rigidbody2d.velocity = force;
-        stunned = true;
-        StopCoroutine(Stun());
+        rigidbody2d.velocity = liftable ? force : new Vector2(force.x, 0);
     }
 
     private IEnumerator Stun() {
@@ -75,8 +72,23 @@ public class EnemyController : MonoBehaviour, IDamageable {
     }
 
     public void Attack(bool right) {
+        right = right;
         animator.Play(forkliftColor + "_basic_attack");
-        attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -5 : 5, 6);
+        attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -3 : 3, 6);
+    }
+
+    private Coroutine stunReset;
+    public void StartCombo(bool hit) {
+        if (!secondaryAttack) return;
+        if (hit) {
+            animator.Play(forkliftColor + "_secondary_attack");
+            attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -1 : 1, -1);
+        } else {
+            animator.Play(forkliftColor + "_basic_attack_cancel");
+        }
+        
+        if (stunReset != null) StopCoroutine(stunReset);
+        stunReset = StartCoroutine(Stun());
     }
 
     private void ActivateAttackHitbox() {

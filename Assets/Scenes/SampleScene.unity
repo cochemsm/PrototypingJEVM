@@ -2761,6 +2761,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1964658709, guid: 95b507b502ad5fc4ca3d21f312b78aaa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2377780855368292544, guid: 95b507b502ad5fc4ca3d21f312b78aaa, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2815,6 +2819,71 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b507b502ad5fc4ca3d21f312b78aaa, type: 3}
+--- !u!1001 &3550791401487362368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2813397828453769542, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_Name
+      value: ForkliftGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612388363708952864, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612388363708952864, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
 --- !u!1001 &3862381743358975366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2869,6 +2938,10 @@ PrefabInstance:
     - target: {fileID: 5844851257680925393, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
       propertyPath: m_Name
       value: ForkliftYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844851257680925393, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2f2b51269aca0e428a8e2b9bbd6e469, type: 3}
