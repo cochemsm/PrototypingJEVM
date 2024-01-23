@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
     private void Update() {
         myCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
-        // backgroundCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
+        backgroundCamera.transform.position = new Vector3(transform.position.x, transform.position.y, -10);
     }
 
     private void FixedUpdate() {

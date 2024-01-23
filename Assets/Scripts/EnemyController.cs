@@ -21,7 +21,6 @@ public class EnemyController : MonoBehaviour, IDamageable {
 
     [SerializeField] private string forkliftColor;
     [SerializeField] private bool liftable;
-    [SerializeField] private bool basicAttackDownwards;
     [SerializeField] private bool secondaryAttack;
 
     public int Damage => damage;
@@ -75,7 +74,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     public void Attack(bool right) {
         right = right;
         animator.Play(forkliftColor + "_basic_attack");
-        attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -3 : 3, basicAttackDownwards ? -3 : 6);
+        attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -3 : 3, 6);
     }
 
     private Coroutine stunReset;

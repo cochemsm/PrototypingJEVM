@@ -390,7 +390,7 @@ Transform:
   m_Children:
   - {fileID: 2084146017}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &482319554
 GameObject:
@@ -589,12 +589,12 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502908466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
   m_Children:
   - {fileID: 136431268}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1871,7 +1871,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 139.437, y: -85.28699, z: -186.345}
 --- !u!1 &1597675745
 GameObject:
@@ -1899,7 +1899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597675745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2817,10 +2817,6 @@ PrefabInstance:
       propertyPath: myCamera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 2377780855368292551, guid: 95b507b502ad5fc4ca3d21f312b78aaa, type: 3}
-      propertyPath: backgroundCamera
-      value: 
-      objectReference: {fileID: 1597675749}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b507b502ad5fc4ca3d21f312b78aaa, type: 3}
 --- !u!1001 &3550791401487362368
@@ -2833,10 +2829,6 @@ PrefabInstance:
     - target: {fileID: 2813397828453769542, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
       propertyPath: m_Name
       value: ForkliftGreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 2813397828453769542, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2813397828453769543, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
       propertyPath: m_RootOrder
@@ -2892,63 +2884,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca97eddbf8d3ef64b861ff2a4aac0f3d, type: 3}
---- !u!1001 &3671913567791640411
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423750, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8340589057864423751, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
-      propertyPath: m_Name
-      value: ForkliftRed
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9bb4da91f5085b74c85085dbea234064, type: 3}
 --- !u!1001 &3862381743358975366
 PrefabInstance:
   m_ObjectHideFlags: 0
