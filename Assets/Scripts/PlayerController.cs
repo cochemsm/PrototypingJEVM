@@ -142,8 +142,6 @@ public class PlayerController : MonoBehaviour, IDamageable {
         if (collision.contactCount == 0) return;
         if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / transform.lossyScale.y / 2) return;
         onGround = true;
-        animator.Play("main_character_idle");
-        input = 0;
     }
 
     public void ActivateAttackHitbox() {
