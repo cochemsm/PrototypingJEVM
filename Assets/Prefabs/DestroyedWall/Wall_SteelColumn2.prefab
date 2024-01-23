@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8502204305585895781}
   - component: {fileID: 4778950675229931200}
   - component: {fileID: 7329266550087713290}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_SteelColumn2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9130544017087275999}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 16.324005, y: 3.9569476, z: 0.0025306519}
+  m_LocalPosition: {x: 16.324005, y: 3.9569476, z: 5}
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.06544157}
   m_Children: []
   m_Father: {fileID: 0}

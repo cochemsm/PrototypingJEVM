@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3470485064157184537}
   - component: {fileID: 542253098751249852}
   - component: {fileID: 2333584907009046902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Segement8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4279109503075686563}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 16.202724, y: 3.9470108, z: 0.0061465823}
+  m_LocalPosition: {x: 16.202724, y: 3.9470108, z: 5}
   m_LocalScale: {x: 1.0359538, y: 1.0805016, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
