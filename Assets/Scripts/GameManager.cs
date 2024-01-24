@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
 
     private Image healthbar;
     private Image oilbar;
+    private Image bossbar;
+    private GameObject bossbarObject;
 
     private void Awake() {
         if (instance != null) {
@@ -25,6 +27,9 @@ public class GameManager : MonoBehaviour {
     private void SetRefrences() {
         healthbar = GameObject.FindGameObjectWithTag("healthbar").GetComponent<Image>();
         oilbar = GameObject.FindGameObjectWithTag("oilbar").GetComponent<Image>();
+        bossbar = GameObject.FindGameObjectWithTag("bossbar").transform.GetChild(1).GetComponent<Image>();
+        bossbarObject = GameObject.FindGameObjectWithTag("bossbar");
+        bossbarObject.SetActive(false);
     }
 
     public void SetHealthbar(float fill) {
@@ -32,6 +37,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SetOilbar(float fill) {
-        healthbar.fillAmount = fill;
+        oilbar.fillAmount = fill;
+    }
+
+    public void SetBossHealth(float fill) {
+        bossbar.fillAmount = fill;
+    }
+
+    public void ActivateBossbar() {
+        bossbarObject.SetActive(true);
     }
 }

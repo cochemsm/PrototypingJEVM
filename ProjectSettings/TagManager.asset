@@ -8,6 +8,7 @@ TagManager:
   - player
   - healthbar
   - oilbar
+  - bossbar
   layers:
   - Default
   - TransparentFX

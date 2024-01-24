@@ -22,6 +22,11 @@ public class EnemyController : MonoBehaviour, IDamageable {
     [SerializeField] private string forkliftColor;
     [SerializeField] private bool liftable;
     [SerializeField] private bool secondaryAttack;
+    [SerializeField] private bool basicAttackDownwards;
+    [SerializeField] private bool specialAttack;
+    [SerializeField] private bool ranged;
+
+    [SerializeField] private GameObject projectile;
 
     public int Damage => damage;
     public float MovementSpeed => movementSpeed;
@@ -71,10 +76,10 @@ public class EnemyController : MonoBehaviour, IDamageable {
         stunned = false;
     }
 
-    public void Attack(bool right) {
-        right = right;
+    public void Attack(bool side) {
+        right = side;
         animator.Play(forkliftColor + "_basic_attack");
-        attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -3 : 3, 6);
+        attackHitBox.GetComponent<AttackScript>().force = new Vector2(right ? -3 : 3, basicAttackDownwards ? -1 : 6);
     }
 
     private Coroutine stunReset;
@@ -93,6 +98,10 @@ public class EnemyController : MonoBehaviour, IDamageable {
 
     private void ActivateAttackHitbox() {
         attackHitBox.SetActive(true);
+    }
+
+    private void RangedAttack() {
+        
     }
 
     public void FlipChilds() {

@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
         right = input < 0;
         attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
         animator.Play("main_character_walking");
+        AudioManager.Instance.PlaySound("player_walking");
     }
 
     public void OnRespawn(InputAction.CallbackContext ctx) {
