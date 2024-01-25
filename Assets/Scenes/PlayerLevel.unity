@@ -683,6 +683,10 @@ RectTransform:
   m_LocalScale: {x: 0.12526523, y: 0.23471874, z: 0.0925}
   m_Children:
   - {fileID: 269109721}
+  - {fileID: 1660193118}
+  - {fileID: 328274263}
+  - {fileID: 2024538226}
+  - {fileID: 986535277}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2264,7 +2268,7 @@ GameObject:
   - component: {fileID: 269109723}
   - component: {fileID: 269109722}
   m_Layer: 5
-  m_Name: TutorialText
+  m_Name: HowToMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2286,7 +2290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32.1, y: 11.3}
+  m_AnchoredPosition: {x: -32.3, y: 7.6}
   m_SizeDelta: {x: 94.615, y: 74.264}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &269109722
@@ -2302,7 +2306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2310,7 +2314,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 8e5ab01022f6eef4f932fcb3614a609d, type: 3}
     m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
@@ -2774,6 +2778,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3820680146159306976, guid: dd9e90e5cff1dcf4a8fff553f17a3113, type: 3}
   m_PrefabInstance: {fileID: 318092579}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &328274262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328274263}
+  - component: {fileID: 328274265}
+  - component: {fileID: 328274264}
+  m_Layer: 5
+  m_Name: HowToDoubleJump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &328274263
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328274262}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6387247, y: 0.362519, z: 1}
+  m_Children: []
+  m_Father: {fileID: 62420070}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 158, y: -9.46}
+  m_SizeDelta: {x: 94.615, y: 74.264}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &328274264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328274262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8e5ab01022f6eef4f932fcb3614a609d, type: 3}
+    m_FontSize: 9
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 150
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: You can Jump twice with "Space" or "S", try it here!
+--- !u!222 &328274265
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328274262}
+  m_CullTransparentMesh: 1
 --- !u!1 &344204142
 GameObject:
   m_ObjectHideFlags: 0
@@ -6711,6 +6794,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3820680146159306976, guid: dd9e90e5cff1dcf4a8fff553f17a3113, type: 3}
   m_PrefabInstance: {fileID: 985720452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &986535276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 986535277}
+  - component: {fileID: 986535279}
+  - component: {fileID: 986535278}
+  m_Layer: 5
+  m_Name: HowToWallRun (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &986535277
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986535276}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6387247, y: 0.362519, z: 1}
+  m_Children: []
+  m_Father: {fileID: 62420070}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 263.7, y: 40.86}
+  m_SizeDelta: {x: 94.615, y: 74.264}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &986535278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986535276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8e5ab01022f6eef4f932fcb3614a609d, type: 3}
+    m_FontSize: 8
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 150
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Reach the end and kill the master of all Forklifts!
+--- !u!222 &986535279
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986535276}
+  m_CullTransparentMesh: 1
 --- !u!1001 &992236775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8218,11 +8380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6108990187957718516, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.61
+      value: -24.916
       objectReference: {fileID: 0}
     - target: {fileID: 6108990187957718516, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3725
+      value: -4.438
       objectReference: {fileID: 0}
     - target: {fileID: 6108990187957718516, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8234,11 +8396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6108990187957718516, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.44568583
       objectReference: {fileID: 0}
     - target: {fileID: 6108990187957718516, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.8951895
       objectReference: {fileID: 0}
     - target: {fileID: 6108990187957718516, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -8254,7 +8416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6108990187957718516, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 52.934
       objectReference: {fileID: 0}
     - target: {fileID: 6885069902816827214, guid: fdf5e53db98b3b148a3cdd2e61bef31c, type: 3}
       propertyPath: m_Name
@@ -10278,6 +10440,85 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3498221021460628853, guid: 85584893f348cc94ca01116cc65ec019, type: 3}
   m_PrefabInstance: {fileID: 1650450638}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1660193117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1660193118}
+  - component: {fileID: 1660193120}
+  - component: {fileID: 1660193119}
+  m_Layer: 5
+  m_Name: HowToAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1660193118
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660193117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.63875, y: 0.3625, z: 1}
+  m_Children: []
+  m_Father: {fileID: 62420070}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 73.7, y: -11.52}
+  m_SizeDelta: {x: 94.615, y: 74.264}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1660193119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660193117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8e5ab01022f6eef4f932fcb3614a609d, type: 3}
+    m_FontSize: 9
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 150
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Press "E" to Attack and Press "R" to use the Specialattack
+--- !u!222 &1660193120
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660193117}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1706357696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11756,6 +11997,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c96f5a429b5802e4dbd41cd52373d8cd, type: 3}
+--- !u!1 &2024538225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2024538226}
+  - component: {fileID: 2024538228}
+  - component: {fileID: 2024538227}
+  m_Layer: 5
+  m_Name: HowToWallRun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2024538226
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024538225}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6387247, y: 0.362519, z: 1}
+  m_Children: []
+  m_Father: {fileID: 62420070}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 238.4, y: -1.93}
+  m_SizeDelta: {x: 94.615, y: 74.264}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2024538227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024538225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 8e5ab01022f6eef4f932fcb3614a609d, type: 3}
+    m_FontSize: 8
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 150
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: To Wall Jump you must Jump towards a Wall and Jump off it again
+--- !u!222 &2024538228
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024538225}
+  m_CullTransparentMesh: 1
 --- !u!1001 &2027961797
 PrefabInstance:
   m_ObjectHideFlags: 0
