@@ -144,18 +144,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.145}
+  m_Offset: {x: 0, y: 0.06884521}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.45, y: 0.29}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.45, y: 0.3}
     newSize: {x: 0.32, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.29}
+  m_Size: {x: 0.45, y: 0.44230956}
   m_EdgeRadius: 0
 --- !u!212 &7612388363708952870
 SpriteRenderer:
@@ -243,6 +243,11 @@ MonoBehaviour:
   forkliftColor: green
   liftable: 0
   secondaryAttack: 1
+  basicAttackDownwards: 0
+  specialAttack: 0
+  ranged: 0
+  boss: 0
+  projectile: {fileID: 0}
 --- !u!114 &7612388363721090611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolPointA: {x: -3.09, y: 0}
   patrolPointB: {x: 3.93, y: 0}
+  startSpecial: 0
 --- !u!1001 &6766909446524825052
 PrefabInstance:
   m_ObjectHideFlags: 0
