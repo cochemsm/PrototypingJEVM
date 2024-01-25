@@ -18,13 +18,15 @@ public class EnemyController : MonoBehaviour, IDamageable {
 
     private bool right;
     private bool stunned;
+    private bool startSpecial;
 
     [SerializeField] private string forkliftColor;
     [SerializeField] private bool liftable;
     [SerializeField] private bool secondaryAttack;
     [SerializeField] private bool basicAttackDownwards;
-    [SerializeField] private bool specialAttack;
-    [SerializeField] private bool ranged;
+    [SerializeField] public bool specialAttack;
+    [SerializeField] public bool ranged;
+    [SerializeField] private bool boss;
 
     [SerializeField] private GameObject projectile;
 
@@ -36,9 +38,13 @@ public class EnemyController : MonoBehaviour, IDamageable {
         rigidbody2d = GetComponent<Rigidbody2D>();
         attackHitBox = transform.GetChild(0).gameObject;
         SetBaseStats();
+        StartCoroutine(EngineSound());
     }
 
     private void Update() {
+        if (specialAttack) { 
+            
+        }
         if (stunned) return; 
         rigidbody2d.velocity = new Vector2(GetComponent<EnemyMovement>().MoveToPatrolPoint().x, rigidbody2d.velocity.y);
     }
@@ -61,9 +67,10 @@ public class EnemyController : MonoBehaviour, IDamageable {
     
     public bool ChangeHealth(int value) {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
+        if (boss) GameManager.Instance.SetBossHealth((float) currentHealth / maxHealth);
         if (currentHealth == 0) Death();
         stunned = true;
-        StopCoroutine(Stun());
+        StopCoroutine(Stun(1));
         return true;
     }
 
@@ -71,8 +78,8 @@ public class EnemyController : MonoBehaviour, IDamageable {
         rigidbody2d.velocity = liftable ? force : new Vector2(force.x, 0);
     }
 
-    private IEnumerator Stun() {
-        yield return new WaitForSeconds(1);
+    private IEnumerator Stun(float time) {
+        yield return new WaitForSeconds(time);
         stunned = false;
     }
 
@@ -93,15 +100,29 @@ public class EnemyController : MonoBehaviour, IDamageable {
         }
         
         if (stunReset != null) StopCoroutine(stunReset);
-        stunReset = StartCoroutine(Stun());
+        stunReset = StartCoroutine(Stun(1));
     }
 
     private void ActivateAttackHitbox() {
         attackHitBox.SetActive(true);
     }
 
+    public void SpecialAttack() {
+        animator.Play(forkliftColor + "_special_attack_start");
+        startSpecial = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (!startSpecial) return;
+        if (!collision.gameObject.CompareTag("player")) return;
+
+        collision.gameObject.GetComponent<PlayerController>().GiveForce(new Vector2(0, 7));
+    }
+
     private void RangedAttack() {
-        
+        float scaleX = transform.localScale.x / transform.lossyScale.x / 2 + projectile.transform.localScale.x / projectile.transform.lossyScale.x / 2;
+        float scaleY = transform.localScale.x / transform.lossyScale.x / 4;
+        Instantiate(projectile, new Vector3(transform.position.x + (right ? -scaleX : scaleX), transform.position.y - scaleY, 0), new Quaternion(0, 0, right ? 180 : 0, 0));
     }
 
     public void FlipChilds() {
@@ -110,9 +131,16 @@ public class EnemyController : MonoBehaviour, IDamageable {
     }
 
     private void Death() {
+        AudioManager.Instance.PlaySound("8bit_bomb_explosion");
         ParticleSystem death = transform.GetChild(2).GetComponent<ParticleSystem>();
         death.Play();
         death.transform.SetParent(null, true);
         Destroy(gameObject);
+    }
+
+    private IEnumerator EngineSound() {
+        AudioManager.Instance.PlaySound("engine_sound");
+        yield return new WaitForSeconds(0.8f);
+        StartCoroutine(EngineSound());
     }
 }

@@ -200,6 +200,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     public bool ChangeHealth(int value) {
+        AudioManager.Instance.PlaySound("player_damage");
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
         if (currentHealth == 0) Death();
 
