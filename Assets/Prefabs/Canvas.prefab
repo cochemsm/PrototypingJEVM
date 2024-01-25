@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 95417587}
+  - component: {fileID: 95417588}
   m_Layer: 5
   m_Name: BossBar
-  m_TagString: Untagged
+  m_TagString: bossbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,6 +38,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 485}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &95417588
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95417586}
+  m_CullTransparentMesh: 1
 --- !u!1 &1027599155
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +134,7 @@ GameObject:
   - component: {fileID: 1682987507}
   m_Layer: 5
   m_Name: Health
-  m_TagString: bossbar
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

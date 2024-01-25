@@ -188,19 +188,6 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b507b502ad5fc4ca3d21f312b78aaa, type: 3}
---- !u!1 &95417586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 95417586, guid: 23279b4f5bd4efa4985f7028925a5fd3, type: 3}
-  m_PrefabInstance: {fileID: 8903169786379293073}
-  m_PrefabAsset: {fileID: 0}
---- !u!222 &95417588
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95417586}
-  m_CullTransparentMesh: 1
 --- !u!1 &187203992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,18 +2411,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 95417586, guid: 23279b4f5bd4efa4985f7028925a5fd3, type: 3}
-      propertyPath: m_TagString
-      value: bossbar
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682987505, guid: 23279b4f5bd4efa4985f7028925a5fd3, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8903169785337867922, guid: 23279b4f5bd4efa4985f7028925a5fd3, type: 3}
-      propertyPath: m_FillAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8903169786593124140, guid: 23279b4f5bd4efa4985f7028925a5fd3, type: 3}
       propertyPath: m_Name
       value: Canvas

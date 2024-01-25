@@ -40,10 +40,6 @@ public class EnemyController : MonoBehaviour, IDamageable {
         SetBaseStats();
     }
 
-    private void Start() {
-        StartCoroutine(EngineSound());
-    }
-
     private void Update() {
         if (specialAttack) { 
             
@@ -139,11 +135,5 @@ public class EnemyController : MonoBehaviour, IDamageable {
         death.Play();
         death.transform.SetParent(null, true);
         Destroy(gameObject);
-    }
-
-    private IEnumerator EngineSound() {
-        AudioManager.Instance.PlaySound("engine_sound");
-        yield return new WaitForSeconds(0.8f);
-        StartCoroutine(EngineSound());
     }
 }

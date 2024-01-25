@@ -21,6 +21,10 @@ public class AudioManager : MonoBehaviour {
         source = GetComponent<AudioSource>();
     }
 
+    private void Start() {
+        StartCoroutine(EngineSound());
+    }
+
     public void PlaySound(string clipName) {
         foreach (var clip in clips) {
             if (clip.name == clipName) {
@@ -28,5 +32,11 @@ public class AudioManager : MonoBehaviour {
                 return;
             }
         }
+    }
+
+    private IEnumerator EngineSound() {
+        PlaySound("engine_sound");
+        yield return new WaitForSeconds(0.8f);
+        StartCoroutine(EngineSound());
     }
 }
