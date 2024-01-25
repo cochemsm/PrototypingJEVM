@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     [SerializeField] private bool basicAttackDownwards;
     [SerializeField] public bool specialAttack;
     [SerializeField] public bool ranged;
-    [SerializeField] private bool boss;
+    [SerializeField] public bool boss;
 
     [SerializeField] private GameObject projectile;
 
@@ -38,6 +38,9 @@ public class EnemyController : MonoBehaviour, IDamageable {
         rigidbody2d = GetComponent<Rigidbody2D>();
         attackHitBox = transform.GetChild(0).gameObject;
         SetBaseStats();
+    }
+
+    private void Start() {
         StartCoroutine(EngineSound());
     }
 

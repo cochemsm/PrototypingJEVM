@@ -75,7 +75,7 @@ AnimationClip:
   - time: 0.083333336
     functionName: ActivateAttackHitbox
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: a36b5dad8c34e4048905bd3f68d6ec15, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

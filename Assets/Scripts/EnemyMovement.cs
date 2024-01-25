@@ -52,7 +52,7 @@ public class EnemyMovement : MonoBehaviour {
             return temp;
         }
 
-        if (Physics2D.Raycast(transform.position, attackDirection, 2, LayerMask.GetMask("Player")).collider != null) {
+        if (Physics2D.Raycast(transform.position, attackDirection, (!GetComponent<EnemyController>().boss) ? 1 : 2, LayerMask.GetMask("Player")).collider != null) {
             temp = Vector2.zero;
             if (!attack) {
                 attack = true;

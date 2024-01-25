@@ -53,11 +53,6 @@ public class PlayerController : MonoBehaviour, IDamageable {
         attackHitBox = transform.GetChild(0).gameObject;
     }
 
-    private void Start() {
-        GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
-        GameManager.Instance.SetOilbar((float) currentOil / maxOil);
-    }
-
     public void OnJump(InputAction.CallbackContext ctx) {
         if (stunned) return;
         if (onWall) {
