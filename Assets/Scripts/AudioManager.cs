@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour {
     public const int PlayerDamage = 2;
     public const int Exposion = 3;
 
+    public const int BackgroundMusic = 4;
+    public const int BossMusic = 5;
+
     private void Awake() {
         if (instance != null) {
             Destroy(gameObject);
@@ -33,6 +36,11 @@ public class AudioManager : MonoBehaviour {
 
     public void PlaySound(int index) {
         source.PlayOneShot(clips[index]);
+    }
+
+    public void PlayMusic(int index) {
+        source.clip = clips[index];
+        source.Play();
     }
 
     private IEnumerator EngineSoundPlay() {
