@@ -171,6 +171,12 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: b50879f75415d5e41b9d46131f085e78, type: 2}
   forkliftColor: yellow
   liftable: 1
+  secondaryAttack: 0
+  basicAttackDownwards: 0
+  specialAttack: 0
+  ranged: 0
+  boss: 0
+  projectile: {fileID: 0}
 --- !u!114 &2284035060777555364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolPointA: {x: -3.09, y: 0}
   patrolPointB: {x: 3.93, y: 0}
+  startSpecial: 0
 --- !u!1 &6972445188110300677
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7343441920802886318
 Transform:
   m_ObjectHideFlags: 0

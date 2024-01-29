@@ -175,6 +175,7 @@ MonoBehaviour:
   basicAttackDownwards: 1
   specialAttack: 0
   ranged: 0
+  boss: 0
   projectile: {fileID: 0}
 --- !u!114 &6282426155417818984
 MonoBehaviour:
@@ -208,7 +209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3275252729496817762
 Transform:
   m_ObjectHideFlags: 0

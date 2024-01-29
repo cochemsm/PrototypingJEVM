@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1292972035966149780
 Transform:
   m_ObjectHideFlags: 0
@@ -246,6 +246,7 @@ MonoBehaviour:
   basicAttackDownwards: 0
   specialAttack: 0
   ranged: 1
+  boss: 0
   projectile: {fileID: 2830301980154992582, guid: 44fb74d1157368c46b77d5a4ef21816f, type: 3}
 --- !u!114 &7758065513531614110
 MonoBehaviour:

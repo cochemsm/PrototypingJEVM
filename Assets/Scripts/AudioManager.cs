@@ -8,6 +8,12 @@ public class AudioManager : MonoBehaviour {
 
     private AudioSource source;
     [SerializeField] private AudioClip[] clips;
+    
+    // AudioClip index
+    public const int EngineSound = 0;
+    public const int PlayerWalking = 1;
+    public const int PlayerDamage = 2;
+    public const int Exposion = 3;
 
     private void Awake() {
         if (instance != null) {
@@ -22,21 +28,16 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void Start() {
-        StartCoroutine(EngineSound());
+        StartCoroutine(EngineSoundPlay());
     }
 
-    public void PlaySound(string clipName) {
-        foreach (var clip in clips) {
-            if (clip.name == clipName) {
-                source.PlayOneShot(clip);
-                return;
-            }
-        }
+    public void PlaySound(int index) {
+        source.PlayOneShot(clips[index]);
     }
 
-    private IEnumerator EngineSound() {
-        PlaySound("engine_sound");
+    private IEnumerator EngineSoundPlay() {
+        PlaySound(AudioManager.EngineSound);
         yield return new WaitForSeconds(0.8f);
-        StartCoroutine(EngineSound());
+        StartCoroutine(EngineSoundPlay());
     }
 }

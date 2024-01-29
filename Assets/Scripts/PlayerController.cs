@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Data;
@@ -36,6 +35,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     private int damage;
     
     private Coroutine comboReset;
+    private Coroutine steps;
     
     public int CurrentHealth => currentHealth;
     public int CurrentOil => currentOil;
@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviour, IDamageable {
         right = input < 0;
         attackHitBox.transform.localPosition = new Vector2(attackHitBox.transform.localPosition.x * -1, attackHitBox.transform.localPosition.y);
         animator.Play("main_character_walking");
-        AudioManager.Instance.PlaySound("player_walking");
     }
 
     public void OnRespawn(InputAction.CallbackContext ctx) {
@@ -105,6 +104,21 @@ public class PlayerController : MonoBehaviour, IDamageable {
     private void FixedUpdate() {
         if (stunned) return;
         rigidbody2d.velocity = new Vector2(input * movementSpeed, rigidbody2d.velocity.y);
+        if (Mathf.Abs(rigidbody2d.velocity.x) > 0 && onGround) {
+            if (steps is null) {
+                steps = StartCoroutine(StepSound());
+            }
+        } else {
+            if (steps != null) StopCoroutine(steps);
+            steps = null;
+        }
+    }
+    
+    private IEnumerator StepSound() {
+        while (true) {
+            AudioManager.Instance.PlaySound(AudioManager.PlayerWalking);
+            yield return new WaitForSeconds(1);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -141,7 +155,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     public void ActivateAttackHitbox() {
-        attackHitBox.SetActive(true);
+        attackHitBox.GetComponent<AttackScript>().Attack();
     }
 
     private void OnCollisionExit2D(Collision2D collision) {
@@ -195,7 +209,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     public bool ChangeHealth(int value) {
-        AudioManager.Instance.PlaySound("player_damage");
+        AudioManager.Instance.PlaySound(AudioManager.PlayerDamage);
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
         if (currentHealth == 0) Death();
 

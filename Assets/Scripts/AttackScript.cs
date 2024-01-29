@@ -6,16 +6,17 @@ public class AttackScript : MonoBehaviour {
     private int damage;
     public Vector2 force;
 
-    private void Awake() {
+    private void Start() {
         if (gameObject.GetComponentInParent<PlayerController>()) {
             player = true;
             damage = gameObject.GetComponentInParent<PlayerController>().Damage;
+            print(damage);
         } else {
             damage = gameObject.GetComponentInParent<EnemyController>().Damage;
         }
     }
 
-    private void OnEnable() {
+    public void Attack() {
         List<Collider2D> results = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D {
             layerMask = LayerMask.GetMask("Enemy")
@@ -32,6 +33,5 @@ public class AttackScript : MonoBehaviour {
         else if (!player) {
             GetComponentInParent<EnemyController>().StartCombo(hit);
         }
-        gameObject.SetActive(false);
     }
 }

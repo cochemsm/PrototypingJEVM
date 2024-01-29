@@ -69,7 +69,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
         if (boss) GameManager.Instance.SetBossHealth((float) currentHealth / maxHealth);
         if (currentHealth == 0) Death();
         stunned = true;
-        StopCoroutine(Stun(1));
+        StartCoroutine(Stun(1));
         return true;
     }
 
@@ -103,7 +103,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     }
 
     private void ActivateAttackHitbox() {
-        attackHitBox.SetActive(true);
+        attackHitBox.GetComponent<AttackScript>().Attack();
     }
 
     public void SpecialAttack() {
@@ -130,7 +130,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     }
 
     private void Death() {
-        AudioManager.Instance.PlaySound("8bit_bomb_explosion");
+        AudioManager.Instance.PlaySound(AudioManager.Exposion);
         ParticleSystem death = transform.GetChild(2).GetComponent<ParticleSystem>();
         death.Play();
         death.transform.SetParent(null, true);
