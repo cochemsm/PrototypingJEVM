@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Data;
@@ -49,8 +50,11 @@ public class PlayerController : MonoBehaviour, IDamageable {
         rigidbody2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        SetBasePlayerStats();
         attackHitBox = transform.GetChild(0).gameObject;
+    }
+
+    private void Start() {
+        SetBasePlayerStats();
     }
 
     public void OnJump(InputAction.CallbackContext ctx) {
@@ -240,6 +244,9 @@ public class PlayerController : MonoBehaviour, IDamageable {
         transform.position = currentRespawnPoint;
         currentHealth = maxHealth;
         currentOil = 0;
+        ChangeHealth(0);
+        GameManager.Instance.TriggerGameOverScreen();
+        Time.timeScale = 1;
     }
 
     public void OnAttack(InputAction.CallbackContext ctx) {
@@ -262,13 +269,16 @@ public class PlayerController : MonoBehaviour, IDamageable {
     public void OnSpecial(InputAction.CallbackContext ctx) {
         if (comboCooldown) return;
         if (!ctx.started) return;
-        if (currentOil != maxOil) return; 
+        if (currentOil <= 0) return; 
         animator.Play("main_character_special_attack");
-        ChangeOil(-maxOil);
+        ChangeOil(-1);
     }
 
     private void Death() {
+        if (death) return;
         death = true;
+        stunned = true;
+        GameManager.Instance.TriggerGameOverScreen();
     }
 
     public void StartCombo() {
@@ -297,6 +307,15 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
     private IEnumerator Stun() {
         yield return new WaitForSeconds(1);
+        stunned = false;
+    }
+
+    public void OnPause(InputAction.CallbackContext ctx) {
+        stunned = !stunned;
+        GameManager.Instance.TriggerPauseMenu();
+    }
+
+    public void RemoveStun() {
         stunned = false;
     }
 }

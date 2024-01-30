@@ -9,6 +9,8 @@ TagManager:
   - healthbar
   - oilbar
   - bossbar
+  - gameOver
+  - pauseMenu
   layers:
   - Default
   - TransparentFX

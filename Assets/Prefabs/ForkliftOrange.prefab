@@ -175,7 +175,7 @@ MonoBehaviour:
   basicAttackDownwards: 0
   specialAttack: 0
   ranged: 0
-  boss: 0
+  boss: 1
   projectile: {fileID: 0}
 --- !u!114 &1542575114499093517
 MonoBehaviour:
@@ -189,8 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ef095bf562754499336c3e44b949ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPointA: {x: -7.48, y: 13.77}
-  patrolPointB: {x: 7.66, y: 13.77}
+  patrolPointA: {x: 127.64, y: 5.72}
+  patrolPointB: {x: 145.43, y: 5.81}
   startSpecial: 0
 --- !u!1 &7645370374998087596
 GameObject:

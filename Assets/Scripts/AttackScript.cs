@@ -10,7 +10,6 @@ public class AttackScript : MonoBehaviour {
         if (gameObject.GetComponentInParent<PlayerController>()) {
             player = true;
             damage = gameObject.GetComponentInParent<PlayerController>().Damage;
-            print(damage);
         } else {
             damage = gameObject.GetComponentInParent<EnemyController>().Damage;
         }
