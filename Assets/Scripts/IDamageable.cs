@@ -2,6 +2,6 @@ using System;
 using UnityEngine;
 
 public interface IDamageable {
-    public bool ChangeHealth(int amount);
+    public int ChangeHealth(int amount);
     public void GiveForce(Vector2 force);
 }

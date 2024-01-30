@@ -123,8 +123,6 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
-        ResetAirJumps();
-        ResetWallJumps();
         
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, Mathf.Infinity, LayerMask.GetMask("Ground"));
         if (hit.collider) {
@@ -134,6 +132,8 @@ public class PlayerController : MonoBehaviour, IDamageable {
                 spriteRenderer.flipX = !onWallRight;
                 rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 animator.Play("main_character_on_wall");
+                ResetAirJumps();
+                ResetWallJumps();
                 return;
             }
         }
@@ -145,12 +145,16 @@ public class PlayerController : MonoBehaviour, IDamageable {
                 spriteRenderer.flipX = !onWallRight;
                 rigidbody2d.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
                 animator.Play("main_character_on_wall");
+                ResetAirJumps();
+                ResetWallJumps();
                 return;
             }
         }
 
         if (collision.contactCount == 0) return;
         if (collision.GetContact(0).point.y > transform.position.y - transform.localScale.y / transform.lossyScale.y / 2) return;
+        ResetAirJumps();
+        ResetWallJumps();
         onGround = true;
     }
 
@@ -208,13 +212,13 @@ public class PlayerController : MonoBehaviour, IDamageable {
         walljumpAmount = playerData.WallJumpAmount;
     }
 
-    public bool ChangeHealth(int value) {
+    public int ChangeHealth(int value) {
         AudioManager.Instance.PlaySound(AudioManager.PlayerDamage);
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
         if (currentHealth == 0) Death();
 
         GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
-        return true;
+        return currentHealth;
     }
 
     public void GiveForce(Vector2 force) {
@@ -225,7 +229,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
     public void ChangeOil(int value) {
         currentOil = Mathf.Clamp(currentOil + value, 0, maxOil);
-        GameManager.Instance.SetOilbar((float) currentOil / maxOil);
+        GameManager.Instance.SetOilbar(currentOil);
     }
 
     public void SetRespawnPoint(Vector2 point) {
@@ -235,7 +239,7 @@ public class PlayerController : MonoBehaviour, IDamageable {
     public void Respawn() {
         transform.position = currentRespawnPoint;
         currentHealth = maxHealth;
-        currentOil = maxOil;
+        currentOil = 0;
     }
 
     public void OnAttack(InputAction.CallbackContext ctx) {
@@ -253,6 +257,14 @@ public class PlayerController : MonoBehaviour, IDamageable {
                 animator.Play("main_character_punch1");
                 break;
         }
+    }
+
+    public void OnSpecial(InputAction.CallbackContext ctx) {
+        if (comboCooldown) return;
+        if (!ctx.started) return;
+        if (currentOil != maxOil) return; 
+        animator.Play("main_character_special_attack");
+        ChangeOil(-maxOil);
     }
 
     private void Death() {

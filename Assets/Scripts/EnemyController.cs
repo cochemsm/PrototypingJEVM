@@ -64,13 +64,13 @@ public class EnemyController : MonoBehaviour, IDamageable {
         movementSpeed = enemyData.PlayerSpeed;
     }
     
-    public bool ChangeHealth(int value) {
+    public int ChangeHealth(int value) {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
         if (boss) GameManager.Instance.SetBossHealth((float) currentHealth / maxHealth);
         if (currentHealth == 0) Death();
         stunned = true;
         StartCoroutine(Stun(1));
-        return true;
+        return currentHealth;
     }
 
     public void GiveForce(Vector2 force) {

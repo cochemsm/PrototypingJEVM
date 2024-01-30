@@ -18,9 +18,8 @@ MonoBehaviour:
   jumpHeightMultiplier: 1.2
   doubleJumpAmount: 1
   wallJumpAmount: -1
-  health: 10
   maxHealth: 10
-  oil: 20
-  maxOil: 20
+  oil: 0
+  maxOil: 3
   startPoint: {x: 0, y: 0}
   damage: 1

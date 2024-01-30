@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour {
     private Image bossbar;
     private GameObject bossbarObject;
 
+    [SerializeField] private Sprite[] oilIcons;
+
     private void Awake() {
         if (instance != null) {
             Destroy(gameObject);
@@ -36,8 +38,8 @@ public class GameManager : MonoBehaviour {
         healthbar.fillAmount = fill;
     }
 
-    public void SetOilbar(float fill) {
-        oilbar.fillAmount = fill;
+    public void SetOilbar(int icon) {
+        oilbar.sprite = oilIcons[icon];
     }
 
     public void SetBossHealth(float fill) {

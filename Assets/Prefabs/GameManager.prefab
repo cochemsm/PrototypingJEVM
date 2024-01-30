@@ -43,3 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbc1a5365cd1e048975ff309e716362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oilIcons:
+  - {fileID: 21300000, guid: cd341e2604370a74883cb6595980f50d, type: 3}
+  - {fileID: 21300000, guid: 3c5b2858c5ab0c04490397d30fb78e23, type: 3}
+  - {fileID: 21300000, guid: 7598d3ae7c55d4f41801bd355dda1d77, type: 3}
+  - {fileID: 21300000, guid: 7094cf81aac35ba47858d91e7d850aee, type: 3}

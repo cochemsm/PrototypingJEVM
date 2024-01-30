@@ -25,12 +25,17 @@ public class AttackScript : MonoBehaviour {
         GetComponent<BoxCollider2D>().OverlapCollider(filter, results);
         foreach (var hitTarget in results) {
             if (player ? hitTarget.CompareTag("enemy") : hitTarget.CompareTag("player")) {
-                hit = hitTarget.gameObject.GetComponent<IDamageable>().ChangeHealth(-damage);
-                hitTarget.gameObject.GetComponent<IDamageable>().GiveForce(force);
+                IDamageable target = hitTarget.gameObject.GetComponent<IDamageable>();
+                if (target != null) hit = true;
+                int targetHealth = target.ChangeHealth(-damage);
+                target.GiveForce(force);
+                if (targetHealth == 0 && player) gameObject.GetComponentInParent<PlayerController>().ChangeOil(1);
             }
         }
-        if (player) gameObject.GetComponentInParent<PlayerController>().StartCombo();
-        else if (!player) {
+
+        if (player) {
+            gameObject.GetComponentInParent<PlayerController>().StartCombo();
+        } else if (!player) {
             GetComponentInParent<EnemyController>().StartCombo(hit);
         }
     }
