@@ -12,7 +12,8 @@ public class Rocket : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.transform.GetComponent<IDamageable>() != null)
-            transform.GetComponent<IDamageable>().ChangeHealth(-damage);
-        Destroy(gameObject);
+            other.transform.GetComponent<IDamageable>().ChangeHealth(-damage);
+        if (other.transform.GetComponent<AttackScript>() == null) 
+            Destroy(gameObject);
     }
 }
