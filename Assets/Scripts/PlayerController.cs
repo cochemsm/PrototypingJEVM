@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour, IDamageable {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         attackHitBox = transform.GetChild(0).gameObject;
+        
+        damage = playerData.Damage;
     }
 
     private void Start() {
@@ -185,7 +187,6 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
         maxHealth = playerData.MaxHealth;
         maxOil = playerData.MaxOil;
-        damage = playerData.Damage;
 
         SetRespawnPoint(playerData.StartPoint);
 
@@ -218,9 +219,10 @@ public class PlayerController : MonoBehaviour, IDamageable {
 
     public int ChangeHealth(int value) {
         AudioManager.Instance.PlaySound(AudioManager.PlayerDamage);
+        StartCoroutine(DamageIndicator());
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
         if (currentHealth == 0) Death();
-
+        
         GameManager.Instance.SetHealthbar((float) currentHealth / maxHealth);
         return currentHealth;
     }
@@ -311,11 +313,18 @@ public class PlayerController : MonoBehaviour, IDamageable {
     }
 
     public void OnPause(InputAction.CallbackContext ctx) {
+        if (!ctx.started) return;
         stunned = !stunned;
         GameManager.Instance.TriggerPauseMenu();
     }
 
     public void RemoveStun() {
         stunned = false;
+    }
+
+    private IEnumerator DamageIndicator() {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        spriteRenderer.color = Color.white;
     }
 }

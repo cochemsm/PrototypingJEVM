@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     private static GameManager instance;
@@ -67,5 +68,21 @@ public class GameManager : MonoBehaviour {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         if (Time.timeScale == 0 && !gameOver) Time.timeScale = 1;
         else Time.timeScale = 0;
+        TriggerCursor();
+    }
+
+    public void GameWon() {
+        SceneManager.LoadScene("MainMenu");
+        AudioManager.Instance.PlayMusic(AudioManager.BackgroundMusic);
+        TriggerCursor();
+    }
+
+    private void TriggerCursor() {
+        Cursor.visible = !Cursor.visible;
+        // Cursor.lockState = Cursor.visible ? CursorLockMode.None : CursorLockMode.Locked;
+    }
+
+    public void DestroySelf() {
+        Destroy(gameObject);
     }
 }

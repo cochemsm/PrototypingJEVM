@@ -13,7 +13,11 @@ public class Rocket : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.transform.GetComponent<IDamageable>() != null)
             other.transform.GetComponent<IDamageable>().ChangeHealth(-damage);
-        if (other.transform.GetComponent<AttackScript>() == null) 
+        if (other.transform.GetComponent<AttackScript>() == null) {
+            ParticleSystem death = transform.GetChild(0).GetComponent<ParticleSystem>();
+            death.Play();
+            transform.DetachChildren();
             Destroy(gameObject);
+        }
     }
 }

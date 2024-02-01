@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
 
     private Animator animator;
     private Rigidbody2D rigidbody2d;
+    private SpriteRenderer spriteRenderer;
 
     private GameObject attackHitBox;
 
@@ -36,6 +37,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     private void Awake() {
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         attackHitBox = transform.GetChild(0).gameObject;
         SetBaseStats();
     }
@@ -65,6 +67,7 @@ public class EnemyController : MonoBehaviour, IDamageable {
     }
     
     public int ChangeHealth(int value) {
+        StartCoroutine(DamageIndicator());
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
         if (boss) GameManager.Instance.SetBossHealth((float) currentHealth / maxHealth);
         if (currentHealth == 0) Death();
@@ -134,6 +137,13 @@ public class EnemyController : MonoBehaviour, IDamageable {
         ParticleSystem death = transform.GetChild(2).GetComponent<ParticleSystem>();
         death.Play();
         death.transform.SetParent(null, true);
+        if (boss) GameManager.Instance.GameWon();
         Destroy(gameObject);
+    }
+    
+    private IEnumerator DamageIndicator() {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        spriteRenderer.color = Color.white;
     }
 }
